@@ -1,0 +1,182 @@
+﻿@model IEnumerable<CPMS.Models.PaperModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Assignments</h1>
+
+<link rel="stylesheet" href="~/css/paper_reviewer.css" />
+<link rel="stylesheet" href="~/lib/multiselect/styles/multiselect.css" />
+
+<table class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Papers
+            </th>
+            <th>
+               Possible Reviewers
+            </th>
+            <th>
+                Action
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Khoa's Paper
+            </td>
+            <td>
+                <select class="form-select" multiple aria-label="multiple select example">
+                  <option selected>Choose 3 reviewers:</option>
+                  <option value="1">Andric Tam</option>
+                  <option value="2">Reubin George</option>
+                  <option value="3">Darth Vader</option>
+                </select>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-primary" id="action-button">Submit</button>
+            </td>
+        </tr>
+@*@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaperID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilenameOriginal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Certification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotesToReviewers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnalysisOfAlgorithms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Applications)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Architecture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtificialIntelligence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComputerEngineering)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Curriculum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataStructures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Databases)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistanceLearning)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistributedSystems)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EthicalSocietalIssues)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstYearComputing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenderIssues)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrantWriting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GraphicsImageProcessing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HumanComputerInteraction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LaboratoryEnvironments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Literacy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MathematicsInComputing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Multimedia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NetworkingDataCommunications)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NonMajorCourses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObjectOrientedIssues)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OperatingSystems)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParallelsProcessing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pedagogy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgrammingLanguages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Research)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Security)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoftwareEngineering)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SystemsAnalysisAndDesign)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsingTechnologyInTheClassroom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebAndInternetProgramming)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Other)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OtherDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}*@
+    </tbody>
+</table>
+
