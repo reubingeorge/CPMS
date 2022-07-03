@@ -173,6 +173,21 @@ namespace CPMS.Data
             
             return newID;
         }
+
+        public bool LoginCheck(string email, string password)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                string sqlQuery = "SELECT * from dbo.Author where EmailAddress = @email AND Password = @pw";
+                SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
+                sqlCommand.Parameters.Add("@email", System.Data.SqlDbType.NVarChar).Value = email;
+                sqlCommand.Parameters.Add("@pw", System.Data.SqlDbType.NVarChar).Value = password;
+                sqlConnection.Open();
+
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+                return dataReader.HasRows;
+            }
+        }
     }
         
 }

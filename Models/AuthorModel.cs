@@ -57,6 +57,7 @@ namespace CPMS.Models
 
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Password is required")]
+        [StringLength(5)]
         public string Password { get; set;}
 
         public AuthorModel()
