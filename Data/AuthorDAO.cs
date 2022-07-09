@@ -39,7 +39,7 @@ namespace CPMS.Data
                         authorModel.City            = dataReader.IsDBNull(7) ? null : dataReader.GetString(7);
                         authorModel.State           = dataReader.IsDBNull(8) ? null : dataReader.GetString(8);
                         authorModel.ZipCode         = dataReader.IsDBNull(9) ? null : dataReader.GetString(9);
-                        authorModel.PhoneNumber     = dataReader.IsDBNull(9) ? null : dataReader.GetString(10);
+                        authorModel.PhoneNumber     = dataReader.IsDBNull(10) ? null : dataReader.GetString(10);
                         authorModel.Email           = dataReader.GetString(11);
                         authorModel.Password        = dataReader.GetString(12);
 
