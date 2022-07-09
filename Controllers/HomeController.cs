@@ -58,12 +58,14 @@ namespace CPMS.Controllers
                 else if (buttonPress.Equals("Author Login"))
                 {
                     AuthorDAO authorDataAccess = new();
-                    if (authorDataAccess.LoginCheck(email, password))
+                    int authorId = authorDataAccess.GetIdByCredential(email, password);
+                    if (authorId > 0)
                     {
                         // Generate claims
                         var claims = new List<Claim>() {
                             new Claim(ClaimTypes.Name, email),
-                            new Claim(ClaimTypes.Role, "Author")
+                            new Claim(ClaimTypes.Role, "Author"),
+                            new Claim("AuthorId", authorId.ToString())
                         };
 
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -81,12 +83,14 @@ namespace CPMS.Controllers
                 else
                 {
                     ReviewerDAO reviewerDataAccess = new();
-                    if (reviewerDataAccess.LoginCheck(email, password))
+                    var reviewerId = reviewerDataAccess.GetIdByCredential(email, password);
+                    if (reviewerId > 0)
                     {
                         // Generate claims
                         var claims = new List<Claim>() {
                             new Claim(ClaimTypes.Name, email),
-                            new Claim(ClaimTypes.Role, "Reviewer")
+                            new Claim(ClaimTypes.Role, "Reviewer"),
+                            new Claim("ReviewerId", reviewerId.ToString())
                         };
 
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -117,9 +121,10 @@ namespace CPMS.Controllers
             if (ModelState.IsValid)
             {
                 AuthorDAO authorDataAccess = new();
-                if (authorDataAccess.LoginCheck(author.Email, author.Password))
+                if (authorDataAccess.GetIdByCredential(author.Email, author.Password) > 0)
                 {
-                    
+                    ViewBag.Message = "You already have an account within our system!";
+                    return RedirectToAction("Login");
                 }
                 authorDataAccess.CreateOrUpdate(author);
 
@@ -136,9 +141,10 @@ namespace CPMS.Controllers
             if (ModelState.IsValid)
             {
                 ReviewerDAO reviewerDataAccess = new();
-                if (reviewerDataAccess.LoginCheck(reviewer.Email, reviewer.Password))
+                if (reviewerDataAccess.GetIdByCredential(reviewer.Email, reviewer.Password) > 0)
                 {
-
+                    ViewBag.Message = "You already have an account within our system!";
+                    return RedirectToAction("Login");
                 }
                 reviewerDataAccess.CreateOrUpdate(reviewer);
 
