@@ -21,24 +21,51 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Users
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Author")>Authors</a>
-                            <a class="dropdown-item" aria-current="page" href="#">Reviewers</a>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=@Url.Action("Index","Review")>Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=@Url.Action("Index","PaperReviewer")>Assignments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=@Url.Action("Logout","Home")>Logout</a>
-                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Users
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Author")>Authors</a>
+                                <a class="dropdown-item" aria-current="page" href="#">Reviewers</a>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Author"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","Author")>Profile</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Reviewer"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","Reviewer")>Profile</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Reviewer") || User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","Review")>Reviews</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","PaperReviewer")>Assignments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","Report")>Reports</a>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Logout","Home")>Logout</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

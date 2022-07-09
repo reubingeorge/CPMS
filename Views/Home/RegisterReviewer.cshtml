@@ -1,0 +1,287 @@
+﻿@model CPMS.Models.ReviewerModel
+
+<form asp-controller="Home" asp-action="RegisterReviewer" class="user-form">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MiddleInitial" class="control-label"></label>
+        <input asp-for="MiddleInitial" class="form-control" />
+        <span asp-validation-for="MiddleInitial" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Affiliation" class="control-label"></label>
+        <input asp-for="Affiliation" class="form-control" />
+        <span asp-validation-for="Affiliation" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Department" class="control-label"></label>
+        <input asp-for="Department" class="form-control" />
+        <span asp-validation-for="Department" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address" class="control-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="City" class="control-label"></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="State" class="control-label"></label>
+        <input asp-for="State" class="form-control" />
+        <span asp-validation-for="State" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ZipCode" class="control-label"></label>
+        <input asp-for="ZipCode" class="form-control" />
+        <span asp-validation-for="ZipCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="control-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div>Select topics you would be interested in reviewing:</div>
+
+    <div class="checkbox">
+        <label asp-for="AnalysisOfAlgorithms">
+            <input asp-for="AnalysisOfAlgorithms" type="checkbox"/>
+            Analysis of Algorithms
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Applications">
+            <input asp-for="Applications" type="checkbox"/>
+            Applications
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Architecture">
+            <input asp-for="Architecture" type="checkbox"/>
+            Architecture
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="ArtificialIntelligence">
+            <input asp-for="ArtificialIntelligence" type="checkbox"/>
+            Artificial Intelligence
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="ComputerEngineering">
+            <input asp-for="ComputerEngineering" type="checkbox"/>
+            Computer Engineering
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Curriculum">
+            <input asp-for="Curriculum" type="checkbox"/>
+            Curriculum
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="DataStructures">
+            <input asp-for="DataStructures" type="checkbox"/>
+            Data Structures
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Databases">
+            <input asp-for="Databases" type="checkbox"/>
+            Databases
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="DistancedLearning">
+            <input asp-for="DistancedLearning" type="checkbox"/>
+            Distanced Learning
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="DistributedSystems">
+            <input asp-for="DistributedSystems" type="checkbox"/>
+            Distributed Systems
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="EthicalSocietalIssues">
+            <input asp-for="EthicalSocietalIssues" type="checkbox"/>
+            Ethical Societal Issues
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="FirstYearComputing">
+            <input asp-for="FirstYearComputing" type="checkbox"/>
+            First Year Computing
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="GenderIssues">
+            <input asp-for="GenderIssues" type="checkbox"/>
+            Gender Issues
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="GrantWriting">
+            <input asp-for="GrantWriting" type="checkbox"/>
+            Grant Writing
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="GraphicsImageProcessing">
+            <input asp-for="GraphicsImageProcessing" type="checkbox"/>
+            Graphics Image Processing
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="HumanComputerInteraction">
+            <input asp-for="HumanComputerInteraction" type="checkbox"/>
+            Human Computer Interaction
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="LaboratoryEnvironments">
+            <input asp-for="LaboratoryEnvironments" type="checkbox"/>
+            Laboratory Environments
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Literacy">
+            <input asp-for="Literacy" type="checkbox"/>
+            Literacy
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="MathematicsInComputing">
+            <input asp-for="MathematicsInComputing" type="checkbox"/>
+            Mathematics in Computing
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Multimedia">
+            <input asp-for="Multimedia" type="checkbox"/>
+            Multimedia
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="NetworkingDataCommunications">
+            <input asp-for="NetworkingDataCommunications" type="checkbox"/>
+            Networking Data Communications
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="NonMajorCourses">
+            <input asp-for="NonMajorCourses" type="checkbox"/>
+            Non-Major Courses
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="ObjectOrientedIssues">
+            <input asp-for="ObjectOrientedIssues" type="checkbox"/>
+            Object Oriented Issue
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="OperatingSystems">
+            <input asp-for="OperatingSystems" type="checkbox"/>
+            Operating Systems
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="ParallelProcessing">
+            <input asp-for="ParallelProcessing" type="checkbox"/>
+            Parallel Processing
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Pedagogy">
+            <input asp-for="Pedagogy" type="checkbox"/>
+            Pedagogy
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="ProgrammingLanguages">
+            <input asp-for="ProgrammingLanguages" type="checkbox"/>
+            Programming Languages
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Research">
+            <input asp-for="Research" type="checkbox"/>
+            Research
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Security">
+            <input asp-for="Security" type="checkbox"/>
+            Security
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="SoftwareEngineering">
+            <input asp-for="SoftwareEngineering" type="checkbox"/>
+            Software Engineering
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="SystemsAnalysisAndDesign">
+            <input asp-for="SystemsAnalysisAndDesign" type="checkbox"/>
+            Systems Analysis and Design
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="UsingTechnologyInTheClassroom">
+            <input asp-for="UsingTechnologyInTheClassroom" type="checkbox"/>
+            Using Technology in the Classroom
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="WebAndInternetProgramming">
+            <input asp-for="WebAndInternetProgramming" type="checkbox"/>
+            Web and Internet Programming
+        </label>
+    </div>
+    <div class="checkbox">
+        <label asp-for="Other">
+            <input asp-for="Other" type="checkbox"/>
+            Other
+        </label>
+    </div>
+    <div>
+        <label asp-for="OtherDescription" class="control-label">If you checked "Other", please elaborate</label>
+        <input asp-for="OtherDescription" class="form-control" />
+        <span asp-validation-for="OtherDescription" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Register" class="btn btn-primary" id="form-submission" />
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
