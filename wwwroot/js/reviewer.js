@@ -16,7 +16,6 @@
         $('#modal-save-button').html('Save Changes');
         if ($(this).data('ref') == 'modal') {
 
-
             //-----------DETAILS-----------------//
             if ($(this).data('action') == 'read') {
                 $('#user-modal').find('.btn-primary').hide();
@@ -56,7 +55,7 @@
                 });
 
                 $('#modal-save-button').click(function () {
-                    $('#author_form').submit();
+                    $('#reviewer_form').submit();
                 });
             }
 
@@ -76,7 +75,7 @@
                     }
                 });
                 $('#modal-save-button').click(function () {
-                    $('#author_form').submit();
+                    $('#reviewer_form').submit();
                 });
             }
 

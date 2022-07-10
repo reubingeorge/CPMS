@@ -62,7 +62,7 @@ namespace CPMS.Models
 
         public AuthorModel()
         {
-            AuthorID        = 0;
+            AuthorID        = -1;
             Email           = "Nothing";
             Password        = "Nothing";
             FirstName       = "Nothing";

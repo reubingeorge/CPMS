@@ -174,6 +174,18 @@ namespace CPMS.Data
             return newID;
         }
 
+        internal void Delete(int id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                string sqlQuery = "DELETE from dbo.Author WHERE AuthorID = @id";
+                SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
+                sqlCommand.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
+
         public int GetIdByCredential(string email, string password)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))

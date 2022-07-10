@@ -4,9 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CPMS</title>
-    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CPMS.styles.css" asp-append-version="true" />
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&amp;display=swap' />
 </head>
 <body>
@@ -29,7 +30,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Author")>Authors</a>
-                                <a class="dropdown-item" aria-current="page" href="#">Reviewers</a>
+                                <a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Reviewer")>Reviewers</a>
                             </ul>
                         </li>
                     }
@@ -87,6 +88,6 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

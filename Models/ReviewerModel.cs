@@ -5,7 +5,7 @@ namespace CPMS.Models
     public class ReviewerModel
     {
         [Display(Name = "ID")]
-        [Range(0, 100000, ErrorMessage = "ID must be between 0.01 and 100000")]
+        [Range(1, 100000, ErrorMessage = "ID must be between 1 and 100000")]
         [Required(ErrorMessage = "ID is required")]
         public int ReviewerID { get; set; }
 
@@ -89,7 +89,7 @@ namespace CPMS.Models
         public ReviewerModel()
         {
             ReviewerID = 0;
-            Active = false;
+            Active = true;
             Email = "Nothing";
             Password = "Nothing";
             FirstName = "Nothing";

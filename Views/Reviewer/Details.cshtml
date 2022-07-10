@@ -1,0 +1,269 @@
+﻿@model CPMS.Models.ReviewerModel
+
+<div>
+    <dl class="row">
+        @if (!string.IsNullOrEmpty(Model.FirstName))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.FirstName)
+            </dd> 
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.MiddleInitial))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.MiddleInitial)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.MiddleInitial)
+            </dd>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.LastName))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Affiliation))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.Affiliation)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.Affiliation)
+            </dd>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Department))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.Department)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.Department)
+            </dd> 
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Address))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.City))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.City)
+            </dd>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.State))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.State)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.State)
+            </dd> 
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.ZipCode))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.ZipCode)
+            </dd> 
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.PhoneNumber))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Email))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.Email)
+            </dd> 
+        }
+        
+
+        @if (!string.IsNullOrEmpty(Model.Password))
+        {
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+        }
+        
+
+        <dt class = "col-sm-4">
+            Interested Topics
+        </dt>
+        <dd class = "col-sm-8">
+        @if (Model.AnalysisOfAlgorithms)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.AnalysisOfAlgorithms)</p>
+        }
+        @if (Model.Applications)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.Applications)</p>
+        }
+        @if (Model.Architecture)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.Architecture)</p>
+        }
+        @if (Model.ArtificialIntelligence)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.ArtificialIntelligence)</p>
+        }
+        @if (Model.ComputerEngineering)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.ComputerEngineering)</p>
+        }
+        @if (Model.Curriculum)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.Curriculum)</p>
+        }
+        @if (Model.DataStructures)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.DataStructures)</p>
+        }
+        @if (Model.Databases)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.Databases)</p>
+        }
+        @if (Model.DistancedLearning)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.DistancedLearning)</p>
+        }
+        @if (Model.DistributedSystems)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.DistributedSystems)</p>
+        }
+        @if (Model.EthicalSocietalIssues)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.EthicalSocietalIssues)</p>
+        }
+        @if (Model.FirstYearComputing)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.FirstYearComputing)</p>
+        }
+        @if (Model.GenderIssues)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.GenderIssues)</p>
+        }
+        @if (Model.GrantWriting)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.GrantWriting)</p>
+        }
+        @if (Model.GraphicsImageProcessing)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.GraphicsImageProcessing)</p>
+        }
+        @if (Model.HumanComputerInteraction)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.HumanComputerInteraction)</p>
+        }
+        @if (Model.LaboratoryEnvironments)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.LaboratoryEnvironments)</p>
+        }
+        @if (Model.Literacy)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.Literacy)</p>
+        }
+        @if (Model.MathematicsInComputing)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.MathematicsInComputing)</p>
+        }
+        @if (Model.Multimedia)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.Multimedia)</p>
+        }
+        @if (Model.NetworkingDataCommunications)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.NetworkingDataCommunications)</p>
+        }
+        @if (Model.NonMajorCourses)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.NonMajorCourses)</p>
+        }
+        @if (Model.ObjectOrientedIssues)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.ObjectOrientedIssues)</p>
+        }
+        @if (Model.OperatingSystems)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.OperatingSystems)</p>
+        }
+        @if (Model.ParallelProcessing)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.ParallelProcessing)</p>
+        }
+        @if (Model.Pedagogy)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.Pedagogy)</p>
+        }
+        @if (Model.ProgrammingLanguages)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.ProgrammingLanguages)</p>
+        }
+        @if (Model.Research)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.Research)</p>
+        }
+        @if (Model.Security)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.Security)</p>
+        }
+        @if (Model.SoftwareEngineering)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.SoftwareEngineering)</p>
+        }
+        @if (Model.SystemsAnalysisAndDesign)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.SystemsAnalysisAndDesign)</p>
+        }
+        @if (Model.UsingTechnologyInTheClassroom)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.UsingTechnologyInTheClassroom)</p>
+        }
+        @if (Model.WebAndInternetProgramming)
+        {
+            <p style="margin: 0;">@Html.DisplayNameFor(model => model.WebAndInternetProgramming)</p>
+        }
+        @if (Model.Other)
+        {
+            <p style="margin: 0;">@Html.DisplayFor(model => model.OtherDescription) @Html.Display(" (Other)")</p>
+        }
+        </dd>
+    </dl>
+</div>
