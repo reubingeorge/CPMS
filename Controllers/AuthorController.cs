@@ -18,7 +18,6 @@ namespace CPMS.Controllers
             return View("Index", authorDAO.FetchAll());
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Details(int id)
         {
@@ -30,7 +29,6 @@ namespace CPMS.Controllers
             return PartialView("Details", authorDAO.FetchOne(id));
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Create()
         {
@@ -41,7 +39,7 @@ namespace CPMS.Controllers
             return PartialView("AuthorForm");
         }
 
-        [Authorize(Roles = "Admin")]
+
         [HttpPost]
         public IActionResult Edit(int id)
         {
@@ -53,7 +51,6 @@ namespace CPMS.Controllers
             return PartialView("AuthorForm", authorDAO.FetchOne(id));
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult ProcessCreate(AuthorModel authorModel)
         {
@@ -67,7 +64,6 @@ namespace CPMS.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Delete(int id)
         {
