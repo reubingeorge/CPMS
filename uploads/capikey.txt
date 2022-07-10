@@ -1,0 +1,4 @@
+G0Z5EXJZ8HNC3GI4
+https://api.polygon.io/v1/meta/symbols/AAPL/company?apiKey=S93SF1yzmeEPsZiAzFO8DeRR6EQzbSw9
+
+
