@@ -1,0 +1,45 @@
+﻿@model CPMS.Models.SwitchModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/lib/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.css"/>
+<link rel="stylesheet" href="~/lib/fontawesome/css/all.css" />
+
+<h1 style="text-align:center;">Paper and Review Submission Toggles</h1>
+
+<table class="table table-striped table-bordered" id="author_table" style="width:100%">
+    <thead>
+        <tr>
+            <th>Review Submission Enabled</th>
+            <th>Paper Submission Enabled</th>
+            <th style="width:20%;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.EnabledReviewers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.EnabledAuthors)
+            </td>
+            <td style="width:20%;">
+                @using (Html.BeginForm("Toggle", "Switch"))
+                {
+                    <input type="submit" name="toggleBtn" value="Toggle Reviews" class="btn btn-outline-primary"/>
+                    <input type="submit" name="toggleBtn" value="Toggle Papers" class="btn btn-outline-info"/>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@section scripts{
+    <script src="~/lib/datatables/DataTables-1.12.1/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/DataTables-1.12.1//js/dataTables.bootstrap5.js"></script>
+    <script src = "~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/js/author.js"></script>
+}

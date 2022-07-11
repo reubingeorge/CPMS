@@ -15,9 +15,13 @@ namespace CPMS.Controllers
             _bufferedFileUploadService = bufferedFileUploadService;
         }
 
-            public IActionResult Index()
+        public IActionResult Index()
         {
-            return View("Index");
+            SwitchDAO switchDataAccess = new();
+            if (switchDataAccess.paperEnabled())
+                return View("Index");
+            else
+                return View("SubmissionOver");
         }
 
         [HttpPost]
