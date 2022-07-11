@@ -34,7 +34,7 @@ namespace CPMS.Controllers
                     ViewBag.Message = "File Upload Failed";
                 }
             }
-            catch(Exception ex)
+            catch (Exception)
             {
                 ViewBag.Message = "Upload failed";
             }

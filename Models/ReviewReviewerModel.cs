@@ -2,7 +2,7 @@
 
 namespace CPMS.Models
 {
-    public class ReviewModel
+    public class ReviewReviewerModel
     {
         [Display(Name = "Review ID")]
         [Range(0, 100000, ErrorMessage = "ID must be between 1 and 100000")]
@@ -10,7 +10,7 @@ namespace CPMS.Models
         public int ReviewID { get; set; }
 
         [Display(Name = "Paper ID")]
-        public int PaperID  { get; set; }
+        public int PaperID { get; set; }
 
 
         [Display(Name = "Reviewer ID")]
@@ -109,5 +109,11 @@ namespace CPMS.Models
         [Display(Name = "Complete")]
         public bool Complete { get; set; }
 
+        [Display(Name = "Paper Title")]
+        public string? Title { get; set; }
+
+
+        [Display(Name = "Original Title")]
+        public string? FilenameOriginal { get; set; }
     }
 }
