@@ -1,4 +1,4 @@
-﻿using CPMS.Models;
+using CPMS.Models;
 using System.Data.SqlClient;
 
 namespace CPMS.Data

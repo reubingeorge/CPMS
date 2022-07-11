@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CPMS.Controllers
 {
+    
     [Authorize(Roles = "Admin")]
     public class AuthorController : Controller
     {
