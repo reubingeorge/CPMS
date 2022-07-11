@@ -4,9 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CPMS</title>
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CPMS.styles.css" asp-append-version="true" />
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&amp;display=swap' />
 </head>
 <body>
@@ -21,21 +22,57 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Users
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Author")>Authors</a>
-                            <a class="dropdown-item" aria-current="page" href="#">Reviewers</a>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=@Url.Action("Index","Review")>Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=@Url.Action("Index","PaperReviewer")>Assignments</a>
-                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Users
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Author")>Authors</a>
+                                <a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Reviewer")>Reviewers</a>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Author"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","EditProfile")>Profile</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Author"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","PaperSubmission")>Submit Paper</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Reviewer"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","EditProfile")>Profile</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Reviewer") || User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","Review")>Reviews</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","PaperReviewer")>Assignments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index","Report")>Reports</a>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Logout","Home")>Logout</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -57,6 +94,6 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

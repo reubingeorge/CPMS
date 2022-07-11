@@ -15,6 +15,14 @@ a {
     border-color: #1861ac;
 }
 
+.form-group {
+    padding: 5px;
+}
+
+label {
+    font-weight: bold;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
     background-color: #1b6ec2;

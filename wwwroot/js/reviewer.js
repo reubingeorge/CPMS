@@ -16,7 +16,6 @@
         $('#modal-save-button').html('Save Changes');
         if ($(this).data('ref') == 'modal') {
 
-
             //-----------DETAILS-----------------//
             if ($(this).data('action') == 'read') {
                 $('#user-modal').find('.btn-primary').hide();
@@ -56,13 +55,14 @@
                 });
 
                 $('#modal-save-button').click(function () {
-                    $('#author_form').submit();
+                    $('#reviewer_form').submit();
                 });
             }
 
 
             //-------CREATE---------------------//
             if ($(this).data('action') == 'create') {
+                $('#user-modal').find('.btn-primary').show();
                 var url = $(this).attr('data-url');
                 $.ajax({
                     type: "POST",
@@ -76,7 +76,7 @@
                     }
                 });
                 $('#modal-save-button').click(function () {
-                    $('#author_form').submit();
+                    $('#reviewer_form').submit();
                 });
             }
 
@@ -84,6 +84,7 @@
             if ($(this).data('action') == 'delete') {
                 var url = $(this).attr('data-url');
                 var id = $(this).attr('data-id');
+                $('#user-modal').find('.btn-primary').show();
                 $('#user-modal').find('.modal-body').html("<p class = 'h6'>Are you sure you want to delete this record?</p>");
                 $('#modal-save-button').removeClass('btn-primary');
                 $('#modal-save-button').addClass('btn-danger');

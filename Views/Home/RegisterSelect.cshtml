@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Register
+                </div>
+                <div class="card-body">
+                    <a href=@Url.Action("RegisterAuthor")>
+                        <input type="button" class="btn-primary" value="I am an author"/>
+                    </a>
+                    <a href=@Url.Action("RegisterReviewer")>
+                        <input type="button" class="btn-primary" value="I am a reviewer"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

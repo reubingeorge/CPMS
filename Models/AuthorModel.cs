@@ -5,7 +5,7 @@ namespace CPMS.Models
     public class AuthorModel
     {
         [Display(Name = "ID")]
-        [Range(1, 100000, ErrorMessage = "ID must be between 0.01 and 100000")]
+        [Range(0, 100000, ErrorMessage = "ID must be between 1 and 100000")]
         [Required(ErrorMessage = "ID is required")]
         public int AuthorID { get; set; }
 
@@ -57,11 +57,12 @@ namespace CPMS.Models
 
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Password is required")]
+        [StringLength(5)]
         public string Password { get; set;}
 
         public AuthorModel()
         {
-            AuthorID        = 1;
+            AuthorID        = -1;
             Email           = "Nothing";
             Password        = "Nothing";
             FirstName       = "Nothing";

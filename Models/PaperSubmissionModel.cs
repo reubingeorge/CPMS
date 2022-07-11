@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CPMS.Models
 {
-    public class PaperModel
+    public class PaperSubmissionModel
     {
         [Display(Name = "Paper ID")]
         [Range(1, 100000, ErrorMessage = "ID must be between 1 and 100000")]
@@ -140,7 +139,10 @@ namespace CPMS.Models
         [Display(Name = "Other (Description)")]
         public string? OtherDescription { get; set; }
 
-        public PaperModel()
+        [Required(ErrorMessage = "Please upload your Paper")]
+        public IFormFile formfile { get; set; }
+
+        public PaperSubmissionModel()
         {
             PaperID = -1;
             AuthorID = -1;
@@ -185,31 +187,33 @@ namespace CPMS.Models
             WebAndInternetProgramming = false;
             Other = false;
             OtherDescription = "Nothing";
+            formfile = null;
         }
 
-        public PaperModel(
-            int paperID, int authorID,
-            bool active, string filenameOriginal,
-            string filename, string title,
-            string? certification, string? notesToReviewers,
-            bool analysisOfAlgorithms, bool applications,
-            bool architecture, bool artificialIntelligence,
-            bool computerEngineering, bool curriculum, bool
-            dataStructures, bool databases,
-            bool distancedLearning, bool distributedSystems,
-            bool ethicalSocietalIssues, bool firstYearComputing,
-            bool genderIssues, bool grantWriting,
-            bool graphicsImageProcessing, bool humanComputerInteraction,
-            bool laboratoryEnvironments, bool literacy,
-            bool mathematicsInComputing, bool multimedia,
-            bool networkingDataCommunications, bool nonMajorCourses,
-            bool objectOrientedIssues, bool operatingSystems,
-            bool parallelProcessing, bool pedagogy,
-            bool programmingLanguages, bool research,
-            bool security, bool softwareEngineering,
-            bool systemsAnalysisAndDesign, bool usingTechnologyInTheClassroom,
-            bool webAndInternetProgramming, bool other,
-            string? otherDescription)
+        public PaperSubmissionModel(
+            int paperID, int authorID, 
+            bool active, 
+            string filenameOriginal, string filename, 
+            string title, string? certification, 
+            string? notesToReviewers, 
+            bool analysisOfAlgorithms, bool applications, 
+            bool architecture, bool artificialIntelligence, 
+            bool computerEngineering, bool curriculum, 
+            bool dataStructures, bool databases, 
+            bool distancedLearning, bool distributedSystems, 
+            bool ethicalSocietalIssues, bool firstYearComputing, 
+            bool genderIssues, bool grantWriting, 
+            bool graphicsImageProcessing, bool humanComputerInteraction, 
+            bool laboratoryEnvironments, bool literacy, 
+            bool mathematicsInComputing, bool multimedia, 
+            bool networkingDataCommunications, bool nonMajorCourses, 
+            bool objectOrientedIssues, bool operatingSystems, 
+            bool parallelProcessing, bool pedagogy, 
+            bool programmingLanguages, bool research, 
+            bool security, bool softwareEngineering, 
+            bool systemsAnalysisAndDesign, bool usingTechnologyInTheClassroom, 
+            bool webAndInternetProgramming, bool other, 
+            string? otherDescription, IFormFile formfile)
         {
             PaperID = paperID;
             AuthorID = authorID;
@@ -254,6 +258,7 @@ namespace CPMS.Models
             WebAndInternetProgramming = webAndInternetProgramming;
             Other = other;
             OtherDescription = otherDescription;
+            this.formfile = formfile;
         }
     }
 }

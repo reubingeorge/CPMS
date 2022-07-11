@@ -39,7 +39,7 @@ namespace CPMS.Data
                         authorModel.City            = dataReader.IsDBNull(7) ? null : dataReader.GetString(7);
                         authorModel.State           = dataReader.IsDBNull(8) ? null : dataReader.GetString(8);
                         authorModel.ZipCode         = dataReader.IsDBNull(9) ? null : dataReader.GetString(9);
-                        authorModel.PhoneNumber     = dataReader.IsDBNull(9) ? null : dataReader.GetString(10);
+                        authorModel.PhoneNumber     = dataReader.IsDBNull(10) ? null : dataReader.GetString(10);
                         authorModel.Email           = dataReader.GetString(11);
                         authorModel.Password        = dataReader.GetString(12);
 
@@ -172,6 +172,41 @@ namespace CPMS.Data
             }
             
             return newID;
+        }
+
+        internal void Delete(int id)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                string sqlQuery = "DELETE from dbo.Author WHERE AuthorID = @id";
+                SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
+                sqlCommand.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
+
+        public int GetIdByCredential(string email, string password)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                string sqlQuery = "SELECT AuthorID from dbo.Author where EmailAddress = @email AND Password = @pw";
+                SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
+                sqlCommand.Parameters.Add("@email", System.Data.SqlDbType.NVarChar).Value = email;
+                sqlCommand.Parameters.Add("@pw", System.Data.SqlDbType.NVarChar).Value = password;
+                sqlConnection.Open();
+
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    dataReader.Read();
+                    return dataReader.GetInt32(0);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
         

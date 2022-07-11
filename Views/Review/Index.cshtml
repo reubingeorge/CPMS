@@ -1,30 +1,213 @@
-﻿@model IEnumerable<CPMS.Models.ReviewModel>
+﻿@model IEnumerable<CPMS.Models.ReviewReviewerModel>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Reviews</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
-            <th></th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ReviewID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaperID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppropriatenessOfTopic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimelinessOfTopic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupportiveEvidence)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TechnicalQuality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScopeOfCoverage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CitationOfPreviousWork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Originality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContentComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationOfPaper)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClarityOfMainMessage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mechanics)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WrittenDocumentComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SuitabilityForPresentation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PotentialInterestInTopic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PotentialForOralPresentationComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OverallRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OverallRatingComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComfortLevelTopic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComfortLevelAcceptability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complete)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                Download File
+            </th>
+            <th>
+                Edit Review
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.FilenameOriginal)
+            </th>*@
+            @*<th></th>*@
         </tr>
     </thead>
     <tbody>
-@*@foreach (var item in Model) {
+@foreach (var item in Model) {
         <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ReviewID)
+            </td>
             <td>
+                @Html.DisplayFor(modelItem => item.PaperID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppropriatenessOfTopic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimelinessOfTopic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupportiveEvidence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechnicalQuality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScopeOfCoverage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CitationOfPreviousWork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Originality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationOfPaper)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClarityOfMainMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mechanics)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WrittenDocumentComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuitabilityForPresentation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PotentialInterestInTopic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PotentialForOralPresentationComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OverallRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OverallRatingComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComfortLevelTopic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComfortLevelAcceptability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complete)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.ActionLink("Download", "DownloadFile", new { fileName = item.FilenameOriginal}, new{@class = "btn btn-outline-primary"})
+            </td>
+            <td>
+                <button class="btn btn-outline-primary" data-url="@Url.Action("Edit")" 
+                data-id ="@item.ReviewID" data-ref="modal" data-action="update">Edit</button>
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.FilenameOriginal)
+            </td>*@
+            @*<td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            </td>*@
         </tr>
-}*@
+}
     </tbody>
 </table>
+
+<div class="modal fade" id="user-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Review</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="modal-save-button">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section scripts{
+    <script src ="~/js/review.js"></script>
+}
