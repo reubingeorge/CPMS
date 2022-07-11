@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CPMS.Controllers
 {
-    [Authorize(Roles = "Reviewer")]
+    [Authorize(Roles = "Reviewer, Admin")]
     public class ReviewController : Controller
     {
         public IActionResult Index()

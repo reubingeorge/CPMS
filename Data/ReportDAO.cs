@@ -36,19 +36,19 @@ namespace CPMS.Data
                     {
                         ReportInfoModel reviewModel = new();
                         reviewModel.Paper.Title = dataReader.GetString(0);
-                        reviewModel.Review.AppropriatenessOfTopic = dataReader.IsDBNull(1) ? null : dataReader.GetDecimal(1);
-                        reviewModel.Review.TimelinessOfTopic = dataReader.IsDBNull(2) ? null : dataReader.GetDecimal(2);
-                        reviewModel.Review.SupportiveEvidence = dataReader.IsDBNull(3) ? null : dataReader.GetDecimal(3);
-                        reviewModel.Review.TechnicalQuality = dataReader.IsDBNull(4) ? null : dataReader.GetDecimal(4);
-                        reviewModel.Review.ScopeOfCoverage = dataReader.IsDBNull(5) ? null : dataReader.GetDecimal(5);
-                        reviewModel.Review.CitationOfPreviousWork = dataReader.IsDBNull(6) ? null : dataReader.GetDecimal(6);
-                        reviewModel.Review.Originality = dataReader.IsDBNull(7) ? null : dataReader.GetDecimal(7);
-                        reviewModel.Review.OrganizationOfPaper = dataReader.IsDBNull(8) ? null : dataReader.GetDecimal(8);
-                        reviewModel.Review.ClarityOfMainMessage = dataReader.IsDBNull(9) ? null : dataReader.GetDecimal(9);
-                        reviewModel.Review.Mechanics = dataReader.IsDBNull(10) ? null : dataReader.GetDecimal(10);
-                        reviewModel.Review.SuitabilityForPresentation = dataReader.IsDBNull(11) ? null : dataReader.GetDecimal(11);
-                        reviewModel.Review.PotentialInterestInTopic = dataReader.IsDBNull(12) ? null : dataReader.GetDecimal(12);
-                        reviewModel.Review.OverallRating = dataReader.IsDBNull(13) ? null : dataReader.GetDecimal(13);
+                        reviewModel.Review.AppropriatenessOfTopic = dataReader.GetDecimal(1);
+                        reviewModel.Review.TimelinessOfTopic = dataReader.GetDecimal(2);
+                        reviewModel.Review.SupportiveEvidence = dataReader.GetDecimal(3);
+                        reviewModel.Review.TechnicalQuality = dataReader.GetDecimal(4);
+                        reviewModel.Review.ScopeOfCoverage = dataReader.GetDecimal(5);
+                        reviewModel.Review.CitationOfPreviousWork = dataReader.GetDecimal(6);
+                        reviewModel.Review.Originality = dataReader.GetDecimal(7);
+                        reviewModel.Review.OrganizationOfPaper = dataReader.GetDecimal(8);
+                        reviewModel.Review.ClarityOfMainMessage = dataReader.GetDecimal(9);
+                        reviewModel.Review.Mechanics =  dataReader.GetDecimal(10);
+                        reviewModel.Review.SuitabilityForPresentation = dataReader.GetDecimal(11);
+                        reviewModel.Review.PotentialInterestInTopic = dataReader.GetDecimal(12);
+                        reviewModel.Review.OverallRating = dataReader.GetDecimal(13);
                         reviewModel.Paper.Filename = dataReader.GetString(14);
                         reviewList.Add(reviewModel);
                     }
