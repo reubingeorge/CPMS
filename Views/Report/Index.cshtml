@@ -1,13 +1,22 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Reports";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Reports</h1>
 
 <div class="row g-0">
-  <div class="col-sm-6 col-md-8">Author Report</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <form action="Report/DownloadAuthor" method="POST">
+      <input type="submit" value="Download Author Report"/>
+      <br/>
+      <input type="submit" formaction="Report/DownloadReviewer" value="Download Reviewer Report"/>
+      <br/>
+      <input type="submit" formaction="Report/DownloadReviews" value="Download Paper Reviews Report"/>
+      <br/>
+      <input type="submit" formaction="Report/DownloadReviewSummary" value="Download Paper Review Summary Report"/>
+      <br/>
+      <input type="submit" formaction="Report/DownloadReviewerComments" value="Download Reviewer Comments Report"/>
+  </form>
 </div>
 

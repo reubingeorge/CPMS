@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace CPMS.Models
 {
@@ -10,7 +10,7 @@ namespace CPMS.Models
         public int ReviewID { get; set; }
 
         [Display(Name = "Paper ID")]
-        public int PaperID  { get; set; }
+        public int PaperID { get; set; }
 
 
         [Display(Name = "Reviewer ID")]

@@ -1,4 +1,4 @@
-﻿using CPMS.Models;
+using CPMS.Models;
 using System.Data.SqlClient;
 
 namespace CPMS.Data
@@ -107,7 +107,7 @@ namespace CPMS.Data
             return reviewList;
         }
 
-        public List <ReviewReviewerModel> FetchAllReviews(int ReviewerID)
+        public List<ReviewReviewerModel> FetchAllReviews(int ReviewerID)
         {
             List<ReviewReviewerModel> reviewReviewerList = new();
             using (SqlConnection sqlConnection = new(connectionString))
@@ -148,7 +148,7 @@ namespace CPMS.Data
                         reviewReviewerModel.Complete = dataReader.GetBoolean(22);
 
                         PaperDAO paperDAO = new();
-                        PaperModel  paperModel = paperDAO.FetchOne(reviewReviewerModel.PaperID);
+                        PaperModel paperModel = paperDAO.FetchOne(reviewReviewerModel.PaperID);
 
                         reviewReviewerModel.Title = paperModel.Title;
                         reviewReviewerModel.FilenameOriginal = paperModel.FilenameOriginal;
@@ -170,7 +170,7 @@ namespace CPMS.Data
                 sqlConnection.Open();
 
                 SqlDataReader dataReader = sqlCommand.ExecuteReader();
-                
+
                 if (dataReader.HasRows)
                 {
                     while (dataReader.Read())
@@ -204,20 +204,20 @@ namespace CPMS.Data
 
                         reviewReviewerModel.Title = paperModel.Title;
                         reviewReviewerModel.FilenameOriginal = paperModel.FilenameOriginal;
-                        
+
                     }
                 }
             }
             return reviewReviewerModel;
-        } 
+        }
 
         public int CreateOrUpdate(ReviewReviewerModel reviewReviewerModel)
         {
             int newID = -1;
-            using(SqlConnection sqlConnection = new(connectionString))
+            using (SqlConnection sqlConnection = new(connectionString))
             {
                 string sqlQuery = "";
-                if(reviewReviewerModel.ReviewID <= 0)
+                if (reviewReviewerModel.ReviewID <= 0)
                 {
                     sqlQuery = "INSERT INTO dbo.Review VALUES(" +
                         "@AppropriatenessOfTopic, " +
@@ -243,7 +243,7 @@ namespace CPMS.Data
                 }
                 else
                 {
-                    sqlQuery = "UPDATE dbo.Review SET "+
+                    sqlQuery = "UPDATE dbo.Review SET " +
                         "AppropriatenessOfTopic = @AppropriatenessOfTopic, " +
                         "TimelinessOfTopic = @TimelinessOfTopic, " +
                         "SupportiveEvidence = @SupportiveEvidence, " +
@@ -274,19 +274,19 @@ namespace CPMS.Data
                 sqlCommand.Parameters.Add("@ScopeOfCoverage", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.ScopeOfCoverage;
                 sqlCommand.Parameters.Add("@CitationOfPreviousWork", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.CitationOfPreviousWork;
                 sqlCommand.Parameters.Add("@Originality", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.Originality;
-                sqlCommand.Parameters.Add("@ContentComments", System.Data.SqlDbType.NVarChar, int.MaxValue).Value = 
+                sqlCommand.Parameters.Add("@ContentComments", System.Data.SqlDbType.NVarChar, int.MaxValue).Value =
                     string.IsNullOrEmpty(reviewReviewerModel.ContentComments) ? DBNull.Value : reviewReviewerModel.ContentComments;
                 sqlCommand.Parameters.Add("@OrganizationOfPaper", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.OrganizationOfPaper;
                 sqlCommand.Parameters.Add("@ClarityOfMainMessage", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.ClarityOfMainMessage;
                 sqlCommand.Parameters.Add("@Mechanics", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.Mechanics;
-                sqlCommand.Parameters.Add("@WrittenDocumentComments", System.Data.SqlDbType.NVarChar, int.MaxValue).Value = 
+                sqlCommand.Parameters.Add("@WrittenDocumentComments", System.Data.SqlDbType.NVarChar, int.MaxValue).Value =
                     string.IsNullOrEmpty(reviewReviewerModel.WrittenDocumentComments) ? DBNull.Value : reviewReviewerModel.WrittenDocumentComments;
                 sqlCommand.Parameters.Add("@SuitabilityForPresentation", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.SuitabilityForPresentation;
                 sqlCommand.Parameters.Add("@PotentialInterestInTopic", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.PotentialInterestInTopic;
-                sqlCommand.Parameters.Add("@PotentialForOralPresentationComments", System.Data.SqlDbType.NVarChar, int.MaxValue).Value = 
-                    string.IsNullOrEmpty(reviewReviewerModel.PotentialForOralPresentationComments)? DBNull.Value : reviewReviewerModel.PotentialForOralPresentationComments;
+                sqlCommand.Parameters.Add("@PotentialForOralPresentationComments", System.Data.SqlDbType.NVarChar, int.MaxValue).Value =
+                    string.IsNullOrEmpty(reviewReviewerModel.PotentialForOralPresentationComments) ? DBNull.Value : reviewReviewerModel.PotentialForOralPresentationComments;
                 sqlCommand.Parameters.Add("@OverallRating", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.OverallRating;
-                sqlCommand.Parameters.Add("@OverallRatingComments", System.Data.SqlDbType.NVarChar, int.MaxValue).Value = 
+                sqlCommand.Parameters.Add("@OverallRatingComments", System.Data.SqlDbType.NVarChar, int.MaxValue).Value =
                     string.IsNullOrEmpty(reviewReviewerModel.OverallRatingComments) ? DBNull.Value : reviewReviewerModel.OverallRatingComments;
                 sqlCommand.Parameters.Add("@ComfortLevelTopic", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.ComfortLevelTopic;
                 sqlCommand.Parameters.Add("@ComfortLevelAcceptability", System.Data.SqlDbType.Decimal).Value = reviewReviewerModel.ComfortLevelAcceptability;
