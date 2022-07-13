@@ -7,34 +7,53 @@
         bind to, which is undesirable because the form tries to access two different tables for its login -->
 
 <div class="container">
-    <main role="main" class="pb-3">
-        <div class="col-md-4">
-            <div class="card">
+    @*<main role="main" class="pb-3">*@
+        @*<div class="col-md-4">*@
+            <div class="card w-50 mx-auto mt-3 border-primary">
                 <div class="card-header">
                     Login
                 </div>
                 <div class="card-body">
                     <form asp-action="Login" method="POST">
                         <div class="form-group">
-                            <label for="email">Email</label><br/>
-                            <input type="text" id="email" name="Email"/>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Email</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Username" name = "Email"
+                                aria-label="Username" aria-describedby="basic-addon1" id="email">
+                            </div>
+                            @*<label for="email">Email</label><br/>
+                            <input type="text" id="email" name="Email"/>*@
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label><br/>
-                            <input type="password" id="password" name="Password"/>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Password</span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Password" name="Password"
+                                aria-label="Password" aria-describedby="basic-addon1" id="password">
+                            </div>
+                            @*<label for="password">Password</label><br/>
+                            <input type="password" id="password" name="Password"/>*@
                         </div>
                         <div class="form-group">
                             <br/>
                             <!-- Yes, both buttons are named the same. This is necessary to determine which login
                                     button is pressed here in the controller without needing an additional view/action. 
                                     See HomeController.cs Login action -->
-                            <input type="submit" class="btn-primary" name="buttonPress" value="Author Login"/>
-                            <input type="submit" class="btn-primary" name="buttonPress" value="Reviewer Login"/>
+                            <input type="submit" class="btn btn-outline-primary" name="buttonPress" value="Author Login"/>
+                            <input type="submit" class="btn btn-outline-primary float-end" name="buttonPress" value="Reviewer Login"/>
                         </div>
-                        <a href=@Url.Action("RegisterSelect")>Signup</a>
+                        <div class="row">
+                            <div class="col text-center">
+                                <a class = "btn btn-outline-info" href=@Url.Action("RegisterSelect")>Signup</a>
+                            </div>
+                        </div>
+                        
                     </form>
                 </div>
             </div>
-        </div>
-    </main>
+        @*</div>*@
+    @*</main>*@
 </div>
