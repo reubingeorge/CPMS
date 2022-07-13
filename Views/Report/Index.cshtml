@@ -6,17 +6,44 @@
 
 <h1>Reports</h1>
 
-<div class="row g-0">
+@*<div class="row g-0">*@
   <form action="Report/DownloadAuthor" method="POST">
-      <input type="submit" value="Download Author Report"/>
-      <br/>
-      <input type="submit" formaction="Report/DownloadReviewer" value="Download Reviewer Report"/>
-      <br/>
-      <input type="submit" formaction="Report/DownloadReviews" value="Download Paper Reviews Report"/>
-      <br/>
-      <input type="submit" formaction="Report/DownloadReviewSummary" value="Download Paper Review Summary Report"/>
-      <br/>
-      <input type="submit" formaction="Report/DownloadReviewerComments" value="Download Reviewer Comments Report"/>
+      <table class="table mt-5">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col" class="text-center">Report</th>
+                  <th scope="col" class="text-center">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <th scope="row">1</th>
+                  <td>Author Report</td>
+                  <td><input type="submit" class="btn btn-outline-primary" value="Download"/></td>
+              </tr>
+              <tr>
+                  <th scope="row">2</th>
+                  <td>Reviewer Report</td>
+                  <td><input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviewer" value="Download"/></td>
+              </tr>
+              <tr>
+                  <th scope="row">3</th>
+                  <td>Paper Reviews Report</td>
+                  <td><input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviews" value="Download"/></td>
+              </tr>
+              <tr>
+                  <th scope="row">4</th>
+                  <td>Paper Review Summary Report</td>
+                  <td><input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviewSummary" value="Download"/></td>
+              </tr>
+              <tr>
+                  <th scope="row">5</th>
+                  <td>Reviewer Comments Report</td>
+                  <td><input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviewerComments" value="Download"/></td>
+              </tr>
+          </tbody>
+      </table>
   </form>
-</div>
+@*</div>*@
 

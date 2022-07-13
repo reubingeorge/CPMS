@@ -29,8 +29,8 @@
                                 Users
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Author")>Authors</a>
-                                <a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Reviewer")>Reviewers</a>
+                                <li><a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Author")>Authors</a></li>
+                                <li><a class="dropdown-item" aria-current="page" href=@Url.Action("Index","Reviewer")>Reviewers</a></li>
                             </ul>
                         </li>
                     }
@@ -70,13 +70,17 @@
                             <a class="nav-link" href=@Url.Action("Index","Switch")>Submission Control</a>
                         </li>
                     }
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href=@Url.Action("Logout","Home")>Logout</a>
-                        </li>
-                    }
+                    
                 </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-secondary" href=@Url.Action("Logout","Home")>Logout</a>
+                        </li>
+                    </ul>   
+                        
+                }
             </div>
         </div>
     </nav>
@@ -87,11 +91,14 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @*<footer class="border-top footer navbar-fixed-bottom text-muted">
         <div class="container">
             &copy; 2022 - CPMS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
+    <div class="footer">
+        &copy; 2022 - CPMS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>

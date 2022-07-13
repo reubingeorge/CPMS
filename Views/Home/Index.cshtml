@@ -1,8 +1,117 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/author_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="author image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">Update Author</h5></div>
+                    <p class="card-text">The administator can add, update, view and delete individual authors in the database.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","Author") class="btn btn-primary">View Authors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/reviewer_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="reviewer image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">Update Reviewer</h5></div>
+                    <p class="card-text">The administator can add, update, view and delete individual reviewers in the database.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","Reviewer") class="btn btn-primary">View Reviewers</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/review_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="review image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">Update Reviews</h5></div>
+                    <p class="card-text">The administrator can add, update, view and delete individual reviewers in the database.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","Review") class="btn btn-primary">View Reviews</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/match_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="match image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">Match Papers with Reviewers</h5></div>
+                    <p class="card-text">The administator can match the papers with the appropriate reviewers for valid peer reviews.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","PaperReviewer") class="btn btn-primary">Match Papers &#38; Reviewers</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/report_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="report image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">View Reports</h5></div>
+                    <p class="card-text">The administator can download Author Report, Review Report, Paper Review Report, 
+                        Paper Review Summary Report and Review Comments Report. These reports are genereated in real-time.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","Report") class="btn btn-primary">View Reports</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/control_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="report image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">Allow Submissions &#38; Reviews</h5></div>
+                    <p class="card-text">The administator can decide when to allow or reject all future review and paper submissions.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","Switch") class="btn btn-primary">Submission Control</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+<style>
+    .card img{
+        height: 275px;
+    }
+</style>
+@*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</div>*@
