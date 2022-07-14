@@ -1,139 +1,220 @@
 ﻿@model CPMS.Models.ReviewReviewerModel
 
 
-
 <div class="row">
-        <form asp-action="ProcessCreate" asp-controller="Review">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group" hidden>
-                <label asp-for="ReviewID" class="control-label"></label>
+    <form asp-action="ProcessCreate" asp-controller="Review">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+        <div class="form-group row mt-3 align-items-center" hidden>
+            <label asp-for="ReviewID" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="ReviewID" class="form-control" />
-                <span asp-validation-for="ReviewID" class="text-danger"></span>
             </div>
-            <div class="form-group" hidden>
-                <label asp-for="PaperID" class="control-label"></label>
+            <span asp-validation-for="ReviewID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center" hidden>
+            <label asp-for="PaperID" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="PaperID" class="form-control" />
-                <span asp-validation-for="PaperID" class="text-danger"></span>
             </div>
-            <div class="form-group" hidden>
-                <label asp-for="ReviewerID" class="control-label"></label>
+            <span asp-validation-for="PaperID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center" hidden>
+            <label asp-for="ReviewerID" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="ReviewerID" class="form-control" />
-                <span asp-validation-for="ReviewerID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="AppropriatenessOfTopic" class="control-label"></label>
+            <span asp-validation-for="ReviewerID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="AppropriatenessOfTopic" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="AppropriatenessOfTopic" class="form-control" />
-                <span asp-validation-for="AppropriatenessOfTopic" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TimelinessOfTopic" class="control-label"></label>
+            <span asp-validation-for="AppropriatenessOfTopic" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="TimelinessOfTopic" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="TimelinessOfTopic" class="form-control" />
-                <span asp-validation-for="TimelinessOfTopic" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="SupportiveEvidence" class="control-label"></label>
+            <span asp-validation-for="TimelinessOfTopic" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="SupportiveEvidence" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="SupportiveEvidence" class="form-control" />
-                <span asp-validation-for="SupportiveEvidence" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TechnicalQuality" class="control-label"></label>
+            <span asp-validation-for="SupportiveEvidence" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="TechnicalQuality" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="TechnicalQuality" class="form-control" />
-                <span asp-validation-for="TechnicalQuality" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ScopeOfCoverage" class="control-label"></label>
+            <span asp-validation-for="TechnicalQuality" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="ScopeOfCoverage" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="ScopeOfCoverage" class="form-control" />
-                <span asp-validation-for="ScopeOfCoverage" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CitationOfPreviousWork" class="control-label"></label>
+            <span asp-validation-for="ScopeOfCoverage" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="CitationOfPreviousWork" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="CitationOfPreviousWork" class="form-control" />
-                <span asp-validation-for="CitationOfPreviousWork" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Originality" class="control-label"></label>
+            <span asp-validation-for="CitationOfPreviousWork" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="Originality" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="Originality" class="form-control" />
-                <span asp-validation-for="Originality" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ContentComments" class="control-label"></label>
-                <input asp-for="ContentComments" class="form-control" />
-                <span asp-validation-for="ContentComments" class="text-danger"></span>
+            <span asp-validation-for="Originality" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <div class="form-floating">
+                <textarea asp-for="ContentComments" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <label asp-for="ContentComments" class="control-label h6" for="floatingTextarea"></label>
             </div>
-            <div class="form-group">
-                <label asp-for="OrganizationOfPaper" class="control-label"></label>
+            <span asp-validation-for="ContentComments" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="OrganizationOfPaper" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="OrganizationOfPaper" class="form-control" />
-                <span asp-validation-for="OrganizationOfPaper" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ClarityOfMainMessage" class="control-label"></label>
+            <span asp-validation-for="OrganizationOfPaper" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="ClarityOfMainMessage" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="ClarityOfMainMessage" class="form-control" />
-                <span asp-validation-for="ClarityOfMainMessage" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Mechanics" class="control-label"></label>
+            <span asp-validation-for="ClarityOfMainMessage" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="Mechanics" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="Mechanics" class="form-control" />
-                <span asp-validation-for="Mechanics" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="WrittenDocumentComments" class="control-label"></label>
-                <input asp-for="WrittenDocumentComments" class="form-control" />
-                <span asp-validation-for="WrittenDocumentComments" class="text-danger"></span>
+            <span asp-validation-for="Mechanics" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <div class="form-floating">
+                <textarea asp-for="WrittenDocumentComments" class="form-control" 
+                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <label asp-for="WrittenDocumentComments" class="control-label h6" for="floatingTextarea"></label>
             </div>
-            <div class="form-group">
-                <label asp-for="SuitabilityForPresentation" class="control-label"></label>
+            <span asp-validation-for="WrittenDocumentComments" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="SuitabilityForPresentation" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="SuitabilityForPresentation" class="form-control" />
-                <span asp-validation-for="SuitabilityForPresentation" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PotentialInterestInTopic" class="control-label"></label>
+            <span asp-validation-for="SuitabilityForPresentation" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="PotentialInterestInTopic" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="PotentialInterestInTopic" class="form-control" />
-                <span asp-validation-for="PotentialInterestInTopic" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PotentialForOralPresentationComments" class="control-label"></label>
-                <input asp-for="PotentialForOralPresentationComments" class="form-control" />
-                <span asp-validation-for="PotentialForOralPresentationComments" class="text-danger"></span>
+            <span asp-validation-for="PotentialInterestInTopic" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <div class="form-floating">
+                <textarea asp-for="PotentialForOralPresentationComments" class="form-control" 
+                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <label asp-for="PotentialForOralPresentationComments" class="control-label h6" 
+                for="floatingTextarea"></label>
             </div>
-            <div class="form-group">
-                <label asp-for="OverallRating" class="control-label"></label>
+            <span asp-validation-for="PotentialForOralPresentationComments" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="OverallRating" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="OverallRating" class="form-control" />
-                <span asp-validation-for="OverallRating" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="OverallRatingComments" class="control-label"></label>
-                <input asp-for="OverallRatingComments" class="form-control" />
-                <span asp-validation-for="OverallRatingComments" class="text-danger"></span>
+            <span asp-validation-for="OverallRating" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <div class="form-floating">
+                <textarea asp-for="OverallRatingComments" class="form-control" 
+                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <label asp-for="OverallRatingComments" class="control-label h6"></label>
             </div>
-            <div class="form-group">
-                <label asp-for="ComfortLevelTopic" class="control-label"></label>
+            <span asp-validation-for="OverallRatingComments" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="ComfortLevelTopic" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="ComfortLevelTopic" class="form-control" />
-                <span asp-validation-for="ComfortLevelTopic" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ComfortLevelAcceptability" class="control-label"></label>
+            <span asp-validation-for="ComfortLevelTopic" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center">
+            <label asp-for="ComfortLevelAcceptability" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="ComfortLevelAcceptability" class="form-control" />
-                <span asp-validation-for="ComfortLevelAcceptability" class="text-danger"></span>
             </div>
-            <div class="form-group form-check" hidden>
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Complete" /> @Html.DisplayNameFor(model => model.Complete)
-                </label>
-            </div>
-            <div class="form-group" hidden>
-                <label asp-for="Title" class="control-label"></label>
+            <span asp-validation-for="ComfortLevelAcceptability" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center form-check" hidden>
+            <label class="form-check-label h6">
+                <div class="col-sm-2">
+                    <input class="form-check-input" asp-for="Complete" />
+                </div>
+                 @Html.DisplayNameFor(model => model.Complete)
+            </label>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center" hidden>
+            <label asp-for="Title" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div class="form-group" hidden>
-                <label asp-for="FilenameOriginal" class="control-label"></label>
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center" hidden>
+            <label asp-for="FilenameOriginal" class="control-label col-sm-10 h6"></label>
+            <div class="col-sm-2">
                 <input asp-for="FilenameOriginal" class="form-control" />
-                <span asp-validation-for="FilenameOriginal" class="text-danger"></span>
             </div>
-            <div class="form-group" hidden>
-                <input type="submit" value="Create" class="btn btn-primary" id="form_submission"/>
-            </div>
-        </form>
+            <span asp-validation-for="FilenameOriginal" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row mt-3 align-items-center" hidden>
+            <input type="submit" value="Create" class="btn btn-primary" id="form_submission"/>
+        </div>
+
+    </form>
 </div>
 
 

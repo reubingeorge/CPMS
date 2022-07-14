@@ -2,9 +2,9 @@
 
 namespace CPMS.Models
 {
-    public class PaperSubmissionModel
+    public class PaperSubmissionModel : PaperModel
     {
-        [Display(Name = "Paper ID")]
+        /*[Display(Name = "Paper ID")]
         [Range(1, 100000, ErrorMessage = "ID must be between 1 and 100000")]
         [Required(ErrorMessage = "Paper ID is required")]
         public int PaperID { get; set; }
@@ -137,7 +137,7 @@ namespace CPMS.Models
         public bool Other { get; set; }
 
         [Display(Name = "Other (Description)")]
-        public string? OtherDescription { get; set; }
+        public string? OtherDescription { get; set; }*/
 
         [Required(ErrorMessage = "Please upload your Paper")]
         public IFormFile formfile { get; set; }

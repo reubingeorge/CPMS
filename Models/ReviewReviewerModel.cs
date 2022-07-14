@@ -2,9 +2,9 @@
 
 namespace CPMS.Models
 {
-    public class ReviewReviewerModel
+    public class ReviewReviewerModel : ReviewModel
     {
-        [Display(Name = "Review ID")]
+        /*[Display(Name = "Review ID")]
         [Range(0, 100000, ErrorMessage = "ID must be between 1 and 100000")]
         [Required(ErrorMessage = "Review ID is required")]
         public int ReviewID { get; set; }
@@ -107,7 +107,7 @@ namespace CPMS.Models
         public decimal ComfortLevelAcceptability { get; set; }
 
         [Display(Name = "Complete")]
-        public bool Complete { get; set; }
+        public bool Complete { get; set; }*/
 
         [Display(Name = "Paper Title")]
         public string? Title { get; set; }
