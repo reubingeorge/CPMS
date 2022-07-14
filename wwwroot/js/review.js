@@ -15,5 +15,9 @@
                 }
             });
         }
+        $('#modal-save-button').click(function () {
+            $('#form_submission').click();
+        });
     });
+    
 });
