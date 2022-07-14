@@ -104,6 +104,75 @@
         </div>
     }
 
+    @if (User.IsInRole("Author"))
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/profile_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="profile image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">Edit Profile</h5></div>
+                    <p class="card-text">The author can edit their own profile to reflect their latest information.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","EditProfile") class="btn btn-primary">Edit Your Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/submit_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="submission image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">Submit Paper</h5></div>
+                    <p class="card-text">The author can submit their research paper and await for reviews from selected peers.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","PaperSubmission") class="btn btn-primary">Submit Your Paper</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (User.IsInRole("Reviewer"))
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/profile_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="profile image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">Edit Profile</h5></div>
+                    <p class="card-text">The reviewer can edit their own profile to reflect their latest information.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","EditProfile") class="btn btn-primary">Edit Your Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100">
+                <img src="~/image/dashboard/review_card_image.svg" class="card-img-top" 
+                class="card-img-top" alt="review image" />
+                <div class="card-body">
+                    <div class="text-center"><h5 class="card-title">Submit Reviews</h5></div>
+                    <p class="card-text">The reviewer must download and read the paper assigned to them while scoring the paper.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <a href=@Url.Action("Index","Review") class="btn btn-primary">Submit Your Review</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
 <style>

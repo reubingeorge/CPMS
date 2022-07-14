@@ -3,7 +3,6 @@
 
 
 <div class="row">
-    <div class="col-md-4">
         <form asp-action="ProcessCreate" asp-controller="Review">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" hidden>
@@ -116,7 +115,7 @@
                 <input asp-for="ComfortLevelAcceptability" class="form-control" />
                 <span asp-validation-for="ComfortLevelAcceptability" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
+            <div class="form-group form-check" hidden>
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Complete" /> @Html.DisplayNameFor(model => model.Complete)
                 </label>
@@ -135,7 +134,6 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
-    </div>
 </div>
 
 
