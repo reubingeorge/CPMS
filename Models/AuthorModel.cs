@@ -2,6 +2,9 @@
 
 namespace CPMS.Models
 {
+    /// <summary>
+    /// Class <c>AuthorModel</c> represents the information of a single Author.
+    /// </summary>
     public class AuthorModel
     {
         [Display(Name = "ID")]
@@ -60,6 +63,9 @@ namespace CPMS.Models
         [StringLength(5)]
         public string Password { get; set;}
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public AuthorModel()
         {
             AuthorID        = -1;
@@ -78,6 +84,22 @@ namespace CPMS.Models
 
         }
 
+        /// <summary>
+        /// Non-Default Constructor
+        /// </summary>
+        /// <param name="authorID">Author ID</param>
+        /// <param name="firstName">First Name</param>
+        /// <param name="middleInitial">Middle Initial</param>
+        /// <param name="lastName">Last Name</param>
+        /// <param name="affiliation">Affiliation</param>
+        /// <param name="department">Department</param>
+        /// <param name="address">Address</param>
+        /// <param name="city">City</param>
+        /// <param name="state">State</param>
+        /// <param name="zipCode">Zip Code</param>
+        /// <param name="phoneNumber">Phone Number</param>
+        /// <param name="email">Email</param>
+        /// <param name="password">Password</param>
         public AuthorModel(
             int authorID, 
             string? firstName, 

@@ -3,9 +3,13 @@ using System.Data.SqlClient;
 
 namespace CPMS.Data
 {
+    /// <summary>
+    /// Class <c>ReportDAO</c> performs the role of the Data Access Object. This DAO is essentially the connector
+    /// between the controller and the database containing the Review and Paper table.
+    /// </summary>
     internal class ReportDAO
     {
-        private string connectionString =
+        private readonly string connectionString =
             @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
@@ -14,7 +18,11 @@ namespace CPMS.Data
                 ApplicationIntent=ReadWrite;
                 MultiSubnetFailover=False";
 
-        public List<ReportInfoModel> FetchReviewSummary()
+        /// <summary>
+        /// Method <c>FetchReviewSummary</c> is used to get the scores that have been assigned to each paper by the reviewers.
+        /// </summary>
+        /// <returns>a list of all scores</returns>
+        internal List<ReportInfoModel> FetchReviewSummary()
         {
             List<ReportInfoModel> reviewList = new();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -57,7 +65,11 @@ namespace CPMS.Data
             return reviewList;
         }
 
-        public List<ReportInfoModel> FetchComments()
+        /// <summary>
+        /// Method <c>FetchComments</c> is used to get the comments of all the papers made by the reviewers
+        /// </summary>
+        /// <returns>a list of all comments</returns>
+        internal List<ReportInfoModel> FetchComments()
         {
             List<ReportInfoModel> infoList = new();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))

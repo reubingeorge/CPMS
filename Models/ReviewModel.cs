@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CPMS.Models
 {
+    /// <summary>
+    /// Class <c>ReviewModel</c> represents the model of a review.
+    /// </summary>
     public class ReviewModel
     {
         [Display(Name = "Review ID")]
@@ -108,6 +111,6 @@ namespace CPMS.Models
 
         [Display(Name = "Complete")]
         public bool Complete { get; set; }
-
     }
+
 }

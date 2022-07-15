@@ -3,9 +3,13 @@ using System.Data.SqlClient;
 
 namespace CPMS.Data
 {
+    /// <summary>
+    /// Class <c>PaperDAO</c> performs the role of the Data Access Object. This DAO is essentially the connector
+    /// between the controller and the database containing the Paper table.
+    /// </summary>
     internal class PaperDAO
     {
-        private string connectionString =
+        private readonly string connectionString =
             @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
@@ -14,6 +18,11 @@ namespace CPMS.Data
                 ApplicationIntent=ReadWrite;
                 MultiSubnetFailover=False";
 
+        /// <summary>
+        /// Method <c>FetchOne</c> extracts only one paper from the database based on the ID.
+        /// </summary>
+        /// <param name="PaperID"></param>
+        /// <returns></returns>
         internal PaperModel FetchOne(int PaperID)
         {
             PaperModel paperModel = new();
@@ -78,6 +87,13 @@ namespace CPMS.Data
             return paperModel;
         }
 
+        /// <summary>
+        /// Method <c>CreateOrUpdate</c> can either edit an existing user or create a new paper in the
+        /// paper table. The operation is chosen based on the ID in the input object. If the ID is less
+        /// than or equal to 0 then a create operation is performed or else an update operation is performed.
+        /// </summary>
+        /// <param name="paperModel">Model containing the information of paper.</param>
+        /// <returns>integer that depicts if the insertion or the update operation has been successfully performed.</returns>
         internal int CreateOrUpdate(PaperSubmissionModel paperModel)
         {
             int newID = -1;

@@ -4,9 +4,13 @@ using CPMS.Models;
 
 namespace CPMS.Data
 {
+    /// <summary>
+    /// Class <c>ReviewerDAO</c> performs the role of the Data Access Object. This DAO is essentially the connector
+    /// between the controller and the database containing the Reviewer table.
+    /// </summary>
     internal class ReviewerDAO
     {
-        private string connectionString =
+        private readonly string connectionString =
             @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
@@ -15,10 +19,15 @@ namespace CPMS.Data
                 ApplicationIntent=ReadWrite;
                 MultiSubnetFailover=False";
 
-        public ReviewerModel FetchOne(int id)
+        /// <summary>
+        /// Method <c>FetchOne</c> extracts only one reviewer from the database based on the ID.
+        /// </summary>
+        /// <param name="id">ID of the reviewer (primary key in the database)</param>
+        /// <returns>An object containing the information of the extracted reviewer</returns>
+        internal ReviewerModel FetchOne(int id)
         {
-            ReviewerModel reviewerModel = new ReviewerModel();
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            ReviewerModel reviewerModel = new ();
+            using (SqlConnection sqlConnection = new (connectionString))
             {
                 string sqlQuery = "SELECT * from dbo.Reviewer where ReviewerID = @id";
                 SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
@@ -88,10 +97,17 @@ namespace CPMS.Data
             return reviewerModel;
         }
 
-        public int CreateOrUpdate(ReviewerModel reviewerModel)
+        /// <summary>
+        /// Method <c>CreateOrUpdate</c> can either edit an existing user or create a new user in the
+        /// reviewer table. The operation is chosen based on the ID in the input object. If the ID is less
+        /// than or equal to 0 then a create operation is performed or else an update operation is performed.
+        /// </summary>
+        /// <param name="reviewerModel">Model containing the information of reviewer.</param>
+        /// <returns>integer that depicts if the insertion or the update operation has been successfully performed.</returns>
+        internal int CreateOrUpdate(ReviewerModel reviewerModel)
         {
             int newID = -1;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new (connectionString))
             {
                 string sqlQuery = "";
                 if (reviewerModel.ReviewerID <= 0)
@@ -272,6 +288,10 @@ namespace CPMS.Data
             return newID;
         }
 
+        /// <summary>
+        /// Method <c>Delete</c> perform a deletion operation on the reviewer table.
+        /// </summary>
+        /// <param name="id">ID of the reviewer (primary key in the database)</param>
         internal void Delete(int id)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -284,7 +304,11 @@ namespace CPMS.Data
             }
         }
 
-        public List<ReviewerModel> FetchAll()
+        /// <summary>
+        /// Method <c>FetchAll</c> extracts a list of all reviewers available in the database.
+        /// </summary>
+        /// <returns>a list of all reviewers in the database</returns>
+        internal List<ReviewerModel> FetchAll()
         {
             List<ReviewerModel> reviwerList = new();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -357,7 +381,13 @@ namespace CPMS.Data
             return reviwerList;
         }
 
-        public int GetIdByCredential(string email, string password)
+        /// <summary>
+        /// Method <c>GetIDByCredential</c> gets the ID of the reviewer based on the entered email and password.
+        /// </summary>
+        /// <param name="email">Email of the reviewer</param>
+        /// <param name="password">Password of the reviewer</param>
+        /// <returns>ID of the reviewer.</returns>
+        internal int GetIdByCredential(string email, string password)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {

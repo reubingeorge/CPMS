@@ -7,14 +7,29 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CPMS.Controllers
 {
+    /// <summary>
+    /// Class <c>ReportController</c> performs the role of the controller. This controller is used to 
+    /// perform two operations simultaneously: CREATE and DOWNLOAD an Excel file. The Excel file are essentially 
+    /// reports of the various data.
+    /// </summary>
     [Authorize(Roles = "Admin")]
     public class ReportController : Controller
     {
+        /// <summary>
+        /// Method <c>Index</c> returns a view of a page that allows users to download various files.
+        /// </summary>
+        /// <returns>an HTML with all the options to download various information.</returns>
         public IActionResult Index()
         {
             return View("Index");
         }
 
+        /// <summary>
+        /// Method <c>DownloadAuthor</c> return a file of the Author Report. This method essentially creates 
+        /// an Excel file while downloading the information from the database. This method forces the program to be
+        /// run on a Windows 10 OS because of the Excel file creation and download.
+        /// </summary>
+        /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         public IActionResult DownloadAuthor()
         {
             // Attempt to initialize Excel
@@ -73,6 +88,13 @@ namespace CPMS.Controllers
             return RedirectToAction("Index");
         }
 
+
+        /// <summary>
+        /// Method <c>DownloadReviewer</c> return a file of the Reviewer Report. This method essentially creates 
+        /// an Excel file while downloading the information from the database. This method forces the program to be
+        /// run on a Windows 10 OS because of the Excel file creation and download.
+        /// </summary>
+        /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         public IActionResult DownloadReviewer()
         {
             // Attempt to initialize Excel
@@ -131,6 +153,12 @@ namespace CPMS.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Method <c>DownloadReviews</c> return a file of the Reviewer Report. This method essentially creates 
+        /// an Excel file while downloading the information from the database. This method forces the program to be
+        /// run on a Windows 10 OS because of the Excel file creation and download.
+        /// </summary>
+        /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         public IActionResult DownloadReviews()
         {
             // Attempt to initialize Excel
@@ -195,6 +223,12 @@ namespace CPMS.Controllers
             return RedirectToAction("Index");            
         }
 
+        /// <summary>
+        /// Method <c>DownloadReviewSummary</c> return a file of the Reviewer Report. This method essentially creates 
+        /// an Excel file while downloading the information from the database. This method forces the program to be
+        /// run on a Windows 10 OS because of the Excel file creation and download.
+        /// </summary>
+        /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         public IActionResult DownloadReviewSummary()
         {
             // Attempt to initialize Excel
@@ -278,6 +312,12 @@ namespace CPMS.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Method <c>DownloadReviewerComments</c> return a file of the Reviewer Report. This method essentially creates 
+        /// an Excel file while downloading the information from the database. This method forces the program to be
+        /// run on a Windows 10 OS because of the Excel file creation and download.
+        /// </summary>
+        /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         public IActionResult DownloadReviewerComments()
         {
             // Attempt to initialize Excel

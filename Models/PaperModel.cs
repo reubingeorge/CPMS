@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CPMS.Models
 {
+    /// <summary>
+    /// Class <c>PaperModel</c> contains the model of a single paper.
+    /// </summary>
     public class PaperModel
     {
         [Display(Name = "Paper ID")]
@@ -140,6 +142,9 @@ namespace CPMS.Models
         [Display(Name = "Other (Description)")]
         public string? OtherDescription { get; set; }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public PaperModel()
         {
             PaperID = -1;
@@ -187,6 +192,52 @@ namespace CPMS.Models
             OtherDescription = "Nothing";
         }
 
+        /// <summary>
+        /// Non-Default Constructor
+        /// </summary>
+        /// <param name="paperID"></param>
+        /// <param name="authorID"></param>
+        /// <param name="active"></param>
+        /// <param name="filenameOriginal"></param>
+        /// <param name="filename"></param>
+        /// <param name="title"></param>
+        /// <param name="certification"></param>
+        /// <param name="notesToReviewers"></param>
+        /// <param name="analysisOfAlgorithms"></param>
+        /// <param name="applications"></param>
+        /// <param name="architecture"></param>
+        /// <param name="artificialIntelligence"></param>
+        /// <param name="computerEngineering"></param>
+        /// <param name="curriculum"></param>
+        /// <param name="dataStructures"></param>
+        /// <param name="databases"></param>
+        /// <param name="distancedLearning"></param>
+        /// <param name="distributedSystems"></param>
+        /// <param name="ethicalSocietalIssues"></param>
+        /// <param name="firstYearComputing"></param>
+        /// <param name="genderIssues"></param>
+        /// <param name="grantWriting"></param>
+        /// <param name="graphicsImageProcessing"></param>
+        /// <param name="humanComputerInteraction"></param>
+        /// <param name="laboratoryEnvironments"></param>
+        /// <param name="literacy"></param>
+        /// <param name="mathematicsInComputing"></param>
+        /// <param name="multimedia"></param>
+        /// <param name="networkingDataCommunications"></param>
+        /// <param name="nonMajorCourses"></param>
+        /// <param name="objectOrientedIssues"></param>
+        /// <param name="operatingSystems"></param>
+        /// <param name="parallelProcessing"></param>
+        /// <param name="pedagogy"></param>
+        /// <param name="programmingLanguages"></param>
+        /// <param name="research"></param>
+        /// <param name="security"></param>
+        /// <param name="softwareEngineering"></param>
+        /// <param name="systemsAnalysisAndDesign"></param>
+        /// <param name="usingTechnologyInTheClassroom"></param>
+        /// <param name="webAndInternetProgramming"></param>
+        /// <param name="other"></param>
+        /// <param name="otherDescription"></param>
         public PaperModel(
             int paperID, int authorID,
             bool active, string filenameOriginal,

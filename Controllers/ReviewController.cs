@@ -19,11 +19,19 @@ namespace CPMS.Controllers
         /// <returns>an html page containing a list of all reviews performed by a particular user.</returns>
         public IActionResult Index()
         {
-            int reviewerID;
-            _ = int.TryParse(User.FindFirst("ReviewerId")?.Value, out reviewerID);
             ReviewDAO reviewDAO = new();
+            if(User.IsInRole("Reviewer")){
+                int reviewerID;
+                _ = int.TryParse(User.FindFirst("ReviewerId")?.Value, out reviewerID);
+                return View("Index", reviewDAO.FetchAllReviews(reviewerID));
+            }
 
-            return View("Index", reviewDAO.FetchAllReviews(reviewerID));
+            if (User.IsInRole("Admin"))
+            {
+                return View("Index1", reviewDAO.FetchAll());
+            }
+
+            return View("Error", "Home");
         }
 
         /// <summary>

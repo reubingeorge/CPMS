@@ -3,9 +3,13 @@ using System.Data.SqlClient;
 
 namespace CPMS.Data
 {
+    /// <summary>
+    /// Class <c>AuthorDAO</c> performs the role of the Data Access Object. This DAO is essentially the connector
+    /// between the controller and the database containing the Author table.
+    /// </summary>
     internal class AuthorDAO
     {
-        private string connectionString = 
+        private readonly string connectionString = 
             @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
@@ -14,7 +18,11 @@ namespace CPMS.Data
                 ApplicationIntent=ReadWrite;
                 MultiSubnetFailover=False";
 
-        public List<AuthorModel> FetchAll()
+        /// <summary>
+        /// Method <c>FetchAll</c> extracts a list of all authors available in the database.
+        /// </summary>
+        /// <returns>a list of all authors in the database</returns>
+        internal List<AuthorModel> FetchAll()
         {
             List<AuthorModel> authorList = new();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -50,10 +58,16 @@ namespace CPMS.Data
             return authorList;
         }
 
-        public AuthorModel FetchOne(int id)
+
+        /// <summary>
+        /// Method <c>FetchOne</c> extracts only one author from the database based on the ID.
+        /// </summary>
+        /// <param name="id">ID of the author (primary key in the database)</param>
+        /// <returns>An object containing the information of the extracted author</returns>
+        internal AuthorModel FetchOne(int id)
         {
             AuthorModel authorModel = new();
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SqlConnection sqlConnection = new (connectionString))
             {
                 string sqlQuery = "SELECT * from dbo.Author where AuthorID = @id";
                 SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
@@ -86,7 +100,15 @@ namespace CPMS.Data
             }
             return authorModel;
         }
-        public int CreateOrUpdate(AuthorModel authorModel)
+
+        /// <summary>
+        /// Method <c>CreateOrUpdate</c> can either edit an existing user or create a new user in the
+        /// author table. The operation is chosen based on the ID in the input object. If the ID is less
+        /// than or equal to 0 then a create operation is performed or else an update operation is performed.
+        /// </summary>
+        /// <param name="authorModel">Model containing the information of author.</param>
+        /// <returns>integer that depicts if the insertion or the update operation has been successfully performed.</returns>
+        internal int CreateOrUpdate(AuthorModel authorModel)
         {
             int newID = -1;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -174,6 +196,10 @@ namespace CPMS.Data
             return newID;
         }
 
+        /// <summary>
+        /// Method <c>Delete</c> perform a deletion operation on the author table.
+        /// </summary>
+        /// <param name="id">ID of the author (primary key in the database)</param>
         internal void Delete(int id)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
@@ -186,7 +212,13 @@ namespace CPMS.Data
             }
         }
 
-        public int GetIdByCredential(string email, string password)
+        /// <summary>
+        /// Method <c>GetIDByCredential</c> gets the ID of the author based on the entered email and password.
+        /// </summary>
+        /// <param name="email">Email of the author</param>
+        /// <param name="password">Password of the author</param>
+        /// <returns>ID of the author.</returns>
+        internal int GetIdByCredential(string email, string password)
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {

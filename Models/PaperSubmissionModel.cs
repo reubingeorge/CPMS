@@ -2,146 +2,18 @@
 
 namespace CPMS.Models
 {
+    /// <summary>
+    /// Class <c>PaperSubmissionModel</c> represents the model of a paper submitted by an author.
+    /// </summary>
     public class PaperSubmissionModel : PaperModel
     {
-        /*[Display(Name = "Paper ID")]
-        [Range(1, 100000, ErrorMessage = "ID must be between 1 and 100000")]
-        [Required(ErrorMessage = "Paper ID is required")]
-        public int PaperID { get; set; }
-
-        [Display(Name = "Author ID")]
-        public int AuthorID { get; set; }
-
-        [Display(Name = "Active")]
-        public bool Active { get; set; }
-
-        [Display(Name = "Filename")]
-        [Required(ErrorMessage = "Filename is required")]
-        public string FilenameOriginal { get; set; }
-
-        [Display(Name = "Filename")]
-        [Required(ErrorMessage = "Filename is required")]
-        public string Filename { get; set; }
-
-        [Display(Name = "Title")]
-        [Required(ErrorMessage = "Paper Title Required")]
-        public string Title { get; set; }
-
-        [Display(Name = "Certification")]
-        public string? Certification { get; set; }
-
-        [Display(Name = "Notes To Reviewers")]
-        public string? NotesToReviewers { get; set; }
-
-
-        [Display(Name = "Analysis Of Algorithms")]
-        public bool AnalysisOfAlgorithms { get; set; }
-
-        [Display(Name = "Applications")]
-        public bool Applications { get; set; }
-
-        [Display(Name = "Architecture")]
-        public bool Architecture { get; set; }
-
-        [Display(Name = "Artificial Intelligence")]
-        public bool ArtificialIntelligence { get; set; }
-
-        [Display(Name = "Computer Engineering")]
-        public bool ComputerEngineering { get; set; }
-
-        [Display(Name = "Curriculum")]
-        public bool Curriculum { get; set; }
-
-        [Display(Name = "Data Structures")]
-        public bool DataStructures { get; set; }
-
-        [Display(Name = "Databases")]
-        public bool Databases { get; set; }
-
-        [Display(Name = "Distance Learning")]
-        public bool DistancedLearning { get; set; }
-
-        [Display(Name = "Distributed Systems")]
-        public bool DistributedSystems { get; set; }
-
-        [Display(Name = "Ethical Societal Issues")]
-        public bool EthicalSocietalIssues { get; set; }
-
-        [Display(Name = "First Year Computing")]
-        public bool FirstYearComputing { get; set; }
-
-        [Display(Name = "Gender Issues")]
-        public bool GenderIssues { get; set; }
-
-        [Display(Name = "Grant Writing")]
-        public bool GrantWriting { get; set; }
-
-        [Display(Name = "Graphics Image Processing")]
-        public bool GraphicsImageProcessing { get; set; }
-
-        [Display(Name = "Human Computer Interaction")]
-        public bool HumanComputerInteraction { get; set; }
-
-        [Display(Name = "Laboratory Environments")]
-        public bool LaboratoryEnvironments { get; set; }
-
-        [Display(Name = "Literacy")]
-        public bool Literacy { get; set; }
-
-        [Display(Name = "Mathematics In Computing")]
-        public bool MathematicsInComputing { get; set; }
-
-        [Display(Name = "Multimedia")]
-        public bool Multimedia { get; set; }
-
-        [Display(Name = "Networking Data Communications")]
-        public bool NetworkingDataCommunications { get; set; }
-
-        [Display(Name = "Non-Major Courses")]
-        public bool NonMajorCourses { get; set; }
-
-        [Display(Name = "Object Oriented Issues")]
-        public bool ObjectOrientedIssues { get; set; }
-
-        [Display(Name = "Operating Systems")]
-        public bool OperatingSystems { get; set; }
-
-        [Display(Name = "Parallel Processing")]
-        public bool ParallelProcessing { get; set; }
-
-        [Display(Name = "Pedagogy")]
-        public bool Pedagogy { get; set; }
-
-        [Display(Name = "Programming Languages")]
-        public bool ProgrammingLanguages { get; set; }
-
-        [Display(Name = "Research")]
-        public bool Research { get; set; }
-
-        [Display(Name = "Security")]
-        public bool Security { get; set; }
-
-        [Display(Name = "Software Engineering")]
-        public bool SoftwareEngineering { get; set; }
-
-        [Display(Name = "Systems Analysis And Design")]
-        public bool SystemsAnalysisAndDesign { get; set; }
-
-        [Display(Name = "Using Technology In The Classroom")]
-        public bool UsingTechnologyInTheClassroom { get; set; }
-
-        [Display(Name = "Web And Internet Programming")]
-        public bool WebAndInternetProgramming { get; set; }
-
-        [Display(Name = "Other")]
-        public bool Other { get; set; }
-
-        [Display(Name = "Other (Description)")]
-        public string? OtherDescription { get; set; }*/
-
         [Required(ErrorMessage = "Please upload your Paper")]
-        public IFormFile formfile { get; set; }
+        public IFormFile Formfile { get; set; }
 
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public PaperSubmissionModel()
         {
             PaperID = -1;
@@ -187,9 +59,56 @@ namespace CPMS.Models
             WebAndInternetProgramming = false;
             Other = false;
             OtherDescription = "Nothing";
-            formfile = null;
+            Formfile = null;
         }
 
+        /// <summary>
+        /// Non-Default Constructor
+        /// </summary>
+        /// <param name="paperID"></param>
+        /// <param name="authorID"></param>
+        /// <param name="active"></param>
+        /// <param name="filenameOriginal"></param>
+        /// <param name="filename"></param>
+        /// <param name="title"></param>
+        /// <param name="certification"></param>
+        /// <param name="notesToReviewers"></param>
+        /// <param name="analysisOfAlgorithms"></param>
+        /// <param name="applications"></param>
+        /// <param name="architecture"></param>
+        /// <param name="artificialIntelligence"></param>
+        /// <param name="computerEngineering"></param>
+        /// <param name="curriculum"></param>
+        /// <param name="dataStructures"></param>
+        /// <param name="databases"></param>
+        /// <param name="distancedLearning"></param>
+        /// <param name="distributedSystems"></param>
+        /// <param name="ethicalSocietalIssues"></param>
+        /// <param name="firstYearComputing"></param>
+        /// <param name="genderIssues"></param>
+        /// <param name="grantWriting"></param>
+        /// <param name="graphicsImageProcessing"></param>
+        /// <param name="humanComputerInteraction"></param>
+        /// <param name="laboratoryEnvironments"></param>
+        /// <param name="literacy"></param>
+        /// <param name="mathematicsInComputing"></param>
+        /// <param name="multimedia"></param>
+        /// <param name="networkingDataCommunications"></param>
+        /// <param name="nonMajorCourses"></param>
+        /// <param name="objectOrientedIssues"></param>
+        /// <param name="operatingSystems"></param>
+        /// <param name="parallelProcessing"></param>
+        /// <param name="pedagogy"></param>
+        /// <param name="programmingLanguages"></param>
+        /// <param name="research"></param>
+        /// <param name="security"></param>
+        /// <param name="softwareEngineering"></param>
+        /// <param name="systemsAnalysisAndDesign"></param>
+        /// <param name="usingTechnologyInTheClassroom"></param>
+        /// <param name="webAndInternetProgramming"></param>
+        /// <param name="other"></param>
+        /// <param name="otherDescription"></param>
+        /// <param name="formfile"></param>
         public PaperSubmissionModel(
             int paperID, int authorID, 
             bool active, 
@@ -258,7 +177,7 @@ namespace CPMS.Models
             WebAndInternetProgramming = webAndInternetProgramming;
             Other = other;
             OtherDescription = otherDescription;
-            this.formfile = formfile;
+            this.Formfile = formfile;
         }
     }
 }

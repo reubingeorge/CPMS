@@ -3,9 +3,13 @@ using System.Data.SqlClient;
 
 namespace CPMS.Data
 {
+    /// <summary>
+    /// Class <c>ReviewDAO</c> performs the role of the Data Access Object. This DAO is essentially the connector
+    /// between the controller and the database containing the Review table.
+    /// </summary>
     internal class ReviewDAO
     {
-        private string connectionString =
+        private readonly string connectionString =
              @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
@@ -14,7 +18,12 @@ namespace CPMS.Data
                 ApplicationIntent=ReadWrite;
                 MultiSubnetFailover=False";
 
-        public List<ReviewModel> FetchAll(int ReviewerID)
+        /// <summary>
+        /// Method <c>FetchAll</c> extracts a list of all reviews available in the database from ONE particular reviewer.
+        /// </summary>
+        /// <param name="ReviewerID">ID of the reviewer (primary key in the database)</param>
+        /// <returns>a list of all reviews made by a reviewer</returns>
+        internal List<ReviewModel> FetchAll(int ReviewerID)
         {
             List<ReviewModel> reviewList = new();
             using (SqlConnection sqlConnection = new(connectionString))
@@ -61,7 +70,11 @@ namespace CPMS.Data
             return reviewList;
         }
 
-        public List<ReviewModel> FetchAll()
+        /// <summary>
+        /// Method <c>FetchAll</c> extracts a list of all reviews available in the database.
+        /// </summary>
+        /// <returns>a list of all reviews</returns>
+        internal List<ReviewModel> FetchAll()
         {
             List<ReviewModel> reviewList = new();
             using (SqlConnection sqlConnection = new(connectionString))
@@ -107,7 +120,13 @@ namespace CPMS.Data
             return reviewList;
         }
 
-        public List<ReviewReviewerModel> FetchAllReviews(int ReviewerID)
+        /// <summary>
+        /// Method <c>FetchAllReviews</c> extracts a list of all reviews alongside the corresponding paper 
+        /// available in the database from ONE particular reviewer.
+        /// </summary>
+        /// <param name="ReviewerID">ID of the reviewer (primary key in the database)</param>
+        /// <returns>a list of all reviews and corresponding made by a reviewer</returns>
+        internal List<ReviewReviewerModel> FetchAllReviews(int ReviewerID)
         {
             List<ReviewReviewerModel> reviewReviewerList = new();
             using (SqlConnection sqlConnection = new(connectionString))
@@ -159,7 +178,13 @@ namespace CPMS.Data
             return reviewReviewerList;
         }
 
-        public ReviewReviewerModel FetchOne(int reviewID)
+        /// <summary>
+        /// Method <c>FetchOne</c> extracts one review alongside the corresponding paper 
+        /// available in the database.
+        /// </summary>
+        /// <param name="reviewID">ID of the review (primary key in the database)</param>
+        /// <returns>An object that contains the information about the review.</returns>
+        internal ReviewReviewerModel FetchOne(int reviewID)
         {
             ReviewReviewerModel reviewReviewerModel = new();
             using (SqlConnection sqlConnection = new(connectionString))
@@ -211,7 +236,14 @@ namespace CPMS.Data
             return reviewReviewerModel;
         }
 
-        public int CreateOrUpdate(ReviewReviewerModel reviewReviewerModel)
+        /// <summary>
+        /// Method <c>CreateOrUpdate</c> can either edit an existing review or create a new review in the
+        /// review table. The operation is chosen based on the ID in the input object. If the ID is less
+        /// than or equal to 0 then a create operation is performed or else an update operation is performed.
+        /// </summary>
+        /// <param name="reviewReviewerModel">Model containing the information of review.</param>
+        /// <returns>integer that depicts if the insertion or the update operation has been successfully performed.</returns>
+        internal int CreateOrUpdate(ReviewReviewerModel reviewReviewerModel)
         {
             int newID = -1;
             using (SqlConnection sqlConnection = new(connectionString))
