@@ -20,18 +20,18 @@ namespace CPMS.Controllers
         public IActionResult Index()
         {
             ReviewDAO reviewDAO = new();
-            if(User.IsInRole("Reviewer")){
+            //if(User.IsInRole("Reviewer")){
                 int reviewerID;
                 _ = int.TryParse(User.FindFirst("ReviewerId")?.Value, out reviewerID);
                 return View("Index", reviewDAO.FetchAllReviews(reviewerID));
-            }
+            //}
 
-            if (User.IsInRole("Admin"))
+            /*if (User.IsInRole("Admin"))
             {
-                return View("Index1", reviewDAO.FetchAll());
-            }
+                return View("Index", reviewDAO.FetchAll());
+            }*/
 
-            return View("Error", "Home");
+            //return View("Error", "Home");
         }
 
         /// <summary>
