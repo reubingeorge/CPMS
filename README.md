@@ -22,14 +22,13 @@
 
 The system will allow only three types of users who have the following privileges:
 
-| Roles         | Privileges                   |
-| ------------- |:---------------------:|
-| Author        | Edit Profile, Submit Papers |
-| Reviewer      | Edit Profile, Submit Reviews |
-| Administrator | <p>CRUD operation of Authors</p> <p>CRUD operation of Reviewers</p> <p>Match Papers with Reviewers</p> <p>Turn off Paper Submission</p> <p>Turn off Review Submission</p>|
+| Roles         | 
+| ------------- |
+| Author        | 
+| Reviewer      | 
+| Administrator | 
 
----
-###
+### Functional Requirements
 
 | **Category** | **Priority** | **The system shall permit an Administrator to…**                 |
 |--------------|--------------|------------------------------------------------------------------|
@@ -47,3 +46,13 @@ The system will allow only three types of users who have the following privilege
 | Optional     | 1            | Maintain the reviewer database table.                            |
 | Optional     | 1            | Maintain the author database table.                              |
 | Optional     | 1            | Maintain the reviews database table.                             |
+
+| **Category** | **Priority** | **The system shall permit a Reviewer to…** |
+|--------------|--------------|--------------------------------------------|
+| Mandatory    | 1            | Log in to account                          |
+| Mandatory    | 1            | Retrieve forgotten passwords               |
+| Mandatory    | 1            | Register with given information            |
+| Mandatory    | 1            | Download papers matched with them          |
+| Mandatory    | 1            | Submit reviews for papers                  |
+| Mandatory    | 2            | Edit account information                   |
+
