@@ -7,16 +7,16 @@ namespace CPMS.Data
     /// Class <c>PaperDAO</c> performs the role of the Data Access Object. This DAO is essentially the connector
     /// between the controller and the database containing the Paper table.
     /// </summary>
-    internal class PaperDAO
+    internal class PaperDAO : DAO
     {
-        private readonly string connectionString =
+        /*private readonly string connectionString =
             @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
                 Connect Timeout=30;Encrypt=False;
                 TrustServerCertificate=False;
                 ApplicationIntent=ReadWrite;
-                MultiSubnetFailover=False";
+                MultiSubnetFailover=False";*/
 
         /// <summary>
         /// Method <c>FetchOne</c> extracts only one paper from the database based on the ID.

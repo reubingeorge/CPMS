@@ -7,16 +7,16 @@ namespace CPMS.Data
     /// Class <c>ReportDAO</c> performs the role of the Data Access Object. This DAO is essentially the connector
     /// between the controller and the database containing the Review and Paper table.
     /// </summary>
-    internal class ReportDAO
+    internal class ReportDAO : DAO
     {
-        private readonly string connectionString =
+        /*private readonly string connectionString =
             @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
                 Connect Timeout=30;Encrypt=False;
                 TrustServerCertificate=False;
                 ApplicationIntent=ReadWrite;
-                MultiSubnetFailover=False";
+                MultiSubnetFailover=False";*/
 
         /// <summary>
         /// Method <c>FetchReviewSummary</c> is used to get the scores that have been assigned to each paper by the reviewers.

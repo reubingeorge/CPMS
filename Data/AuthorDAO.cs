@@ -7,16 +7,16 @@ namespace CPMS.Data
     /// Class <c>AuthorDAO</c> performs the role of the Data Access Object. This DAO is essentially the connector
     /// between the controller and the database containing the Author table.
     /// </summary>
-    internal class AuthorDAO
+    internal class AuthorDAO : DAO
     {
-        private readonly string connectionString = 
+        /*private readonly string connectionString = 
             @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
                 Connect Timeout=30;Encrypt=False;
                 TrustServerCertificate=False;
                 ApplicationIntent=ReadWrite;
-                MultiSubnetFailover=False";
+                MultiSubnetFailover=False";*/
 
         /// <summary>
         /// Method <c>FetchAll</c> extracts a list of all authors available in the database.

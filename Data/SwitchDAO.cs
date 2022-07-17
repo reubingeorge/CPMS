@@ -8,16 +8,16 @@ namespace CPMS.Data;
 /// between the controller and the database containing the State table. The State table determines if an author
 /// can submit a paper or if a reviewer can submit a review.
 /// </summary>
-internal class SwitchDAO
+internal class SwitchDAO : DAO
 {
-    private readonly string connectionString =
+    /*private readonly string connectionString =
         @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
                 Connect Timeout=30;Encrypt=False;
                 TrustServerCertificate=False;
                 ApplicationIntent=ReadWrite;
-                MultiSubnetFailover=False";
+                MultiSubnetFailover=False";*/
 
     /// <summary>
     /// Method <c>FetchSwitches</c> determines the state of the authors or reviewers.

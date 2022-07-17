@@ -8,16 +8,16 @@ namespace CPMS.Data
     /// Class <c>ReviewerDAO</c> performs the role of the Data Access Object. This DAO is essentially the connector
     /// between the controller and the database containing the Reviewer table.
     /// </summary>
-    internal class ReviewerDAO
+    internal class ReviewerDAO : DAO
     {
-        private readonly string connectionString =
+        /*private readonly string connectionString =
             @"Data Source=(localdb)\ProjectModels;
                 Initial Catalog=CPMS;
                 Integrated Security=True;
                 Connect Timeout=30;Encrypt=False;
                 TrustServerCertificate=False;
                 ApplicationIntent=ReadWrite;
-                MultiSubnetFailover=False";
+                MultiSubnetFailover=False";*/
 
         /// <summary>
         /// Method <c>FetchOne</c> extracts only one reviewer from the database based on the ID.
