@@ -56,3 +56,21 @@ The system will allow only three types of users who have the following privilege
 | Mandatory    | 1            | Submit reviews for papers                  |
 | Mandatory    | 2            | Edit account information                   |
 
+| **Category** | **Priority** | **The system shall permit an Author to...** |
+|--------------|--------------|---------------------------------------------|
+| Mandatory    | 1            | Log in to account                           |
+| Mandatory    | 1            | Retrieve forgotten passwords                |
+| Mandatory    | 1            | Register with given information             |
+| Mandatory    | 1            | Submit a paper                              |
+| Mandatory    | 2            | Edit account information                    |
+
+### Non-Functional Requirements
+
+| **Category** | **Priority** | **Requirements**                                                                            |
+|--------------|--------------|---------------------------------------------------------------------------------------------|
+| Mandatory    | 1            | Availability: System should be available 24/7                                               |
+| Mandatory    | 1            | Compatibility: System should be able to operate on Edge, Firefox, Chrome, Safari, and Opera |
+| Mandatory    | 1            | Robustness: System will not allow the user to input bad data                                |
+| Mandatory    | 1            | Security: System will be inaccessible without login credentials                             |
+| Mandatory    | 1            | Usability: System should be intuitive and easy to use                                       |
+
