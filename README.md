@@ -9,5 +9,15 @@
   
   <dt>Team</dt>
   <dd>Team 12 (Khoa Doan, Reubin George, Andric Tam)</dd>
+  
+  <dt>System Requirements</dt>
+  <dd>Windows 10 (Any Edition)</dd>
+  <dd>Visual Studio 2019 (or higher)</dd>
+  <dd>MS SQL</dd>
+  
+  <dt>Programming Languages</dt>
+  <dd>C# (ASP.NET)</dd>
+  <dd>Javascript/ jQuery</dd>
+  <dd>HTML, CSS (Bootstrap)</dd>
 </dl>
 
