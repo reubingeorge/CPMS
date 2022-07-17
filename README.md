@@ -78,4 +78,4 @@ The system will allow only three types of users who have the following privilege
 ### Setup
 1. The first time you run the code of Visual Studio, run the sql query file named `CPMS Database Creation Script.sql`
 
-...![SQL Query](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Running the SQL Query")
+...You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
