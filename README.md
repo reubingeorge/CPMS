@@ -86,3 +86,5 @@ The system will allow only three types of users who have the following privilege
 4. Copy the connection string of the CPMS database. ![SQL DB Properites](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_connection_string.png?raw=true "SQL DB Connection String")
 
 5. Navigate to the `DAO.cs` file under the `Data` folder and paste the connection string between the quotes. ![DAO.cs file](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_DAO_connection_string.png?raw=true "Connection string in DAO.cs")
+
+6. In the Menu Bar, navigate to Build and click build to ensure that no errors are created. ![Successful Build](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/successful_build.png?raw=true "Successful Build")
