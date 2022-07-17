@@ -26,4 +26,4 @@ The system will allow only three types of users who have the following privilege
 | ------------- |:---------------------:|
 | Author        | Edit Profile, Submit Papers |
 | Reviewer      | Edit Profile, Submit Reviews |
-| Administrator | <p>CRUD operation of Author & Reviewers List</p>, Match Papers with Reviewers, Turn off Paper & Review Submission|
+| Administrator | <p>CRUD operation of Authors</p> <p>CRUD operation of Reviewers</p> <p>Match Papers with Reviewers</p> <p>Turn off Paper & Review Submission</p>|
