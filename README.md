@@ -27,3 +27,23 @@ The system will allow only three types of users who have the following privilege
 | Author        | Edit Profile, Submit Papers |
 | Reviewer      | Edit Profile, Submit Reviews |
 | Administrator | <p>CRUD operation of Authors</p> <p>CRUD operation of Reviewers</p> <p>Match Papers with Reviewers</p> <p>Turn off Paper Submission</p> <p>Turn off Review Submission</p>|
+
+---
+###
+
+| **Category** | **Priority** | **The system shall permit an Administrator to…**                 |
+|--------------|--------------|------------------------------------------------------------------|
+| Mandatory    | 1            | Log in to account.                                               |
+| Mandatory    | 1            | Start paper and reviewer matching process.                       |
+| Mandatory    | 1            | Edit paper and reviewer matching results.                        |
+| Mandatory    | 1            | Distribute the correct papers to the reviewer.                   |
+| Mandatory    | 1            | Generate a report for each paper based off submitted reviews.    |
+| Mandatory    | 1            | Generate authors report.                                         |
+| Mandatory    | 1            | Generate reviewers report.                                       |
+| Mandatory    | 1            | Generate reviewer’s comment report.                              |
+| Mandatory    | 2            | Prevent papers from being submitted after a specified deadline.  |
+| Mandatory    | 2            | Prevent reviews from being submitted after a specified deadline. |
+| Optional     | 1            | Maintain the paper database table.                               |
+| Optional     | 1            | Maintain the reviewer database table.                            |
+| Optional     | 1            | Maintain the author database table.                              |
+| Optional     | 1            | Maintain the reviews database table.                             |
