@@ -74,3 +74,6 @@ The system will allow only three types of users who have the following privilege
 | Mandatory    | 1            | Security: System will be inaccessible without login credentials                             |
 | Mandatory    | 1            | Usability: System should be intuitive and easy to use                                       |
 
+---
+### Setup
+1. The first time you run the code of Visual Studio, run the sql query file named `CPMS Database Creation Script.sql`
