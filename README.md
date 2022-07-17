@@ -78,4 +78,11 @@ The system will allow only three types of users who have the following privilege
 ### Setup
 
 1. The first time you run the code of Visual Studio, run the sql query file named `CPMS Database Creation Script.sql` ![SQL QUERY](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/run_sql_query.png?raw=true "Running SQL Query to create a database")
+
 2. Ensure that the database has been created with the following tables in it. ![SQL Tables](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/database_creations.png?raw=true "Database Tables")
+
+3. Navigate to the properties panel of the CPMS database. ![SQL DB Properites](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_properties.png?raw=true "SQL DB Properties Panel")
+
+4. Copy the connection string of the CPMS database. ![SQL DB Properites](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_connection_string.png?raw=true "SQL DB Connection String")
+
+5. Navigate to the `DAO.cs` file under the `Data` folder and paste the connection string between the quotes. ![DAO.cs file](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_connection_string.png?raw=true "Connection string in DAO.cs")
