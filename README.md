@@ -18,3 +18,12 @@
 </dl>
 
 ---
+### System Description
+
+The system will allow only three types of users who have the following privileges:
+
+| Roles         | Are                   |
+| ------------- |:---------------------:|
+| Author        | Edit Profile, Submit Papers |
+| Reviewer      | Edit Profile, Submit Reviews |
+| Administrator | CRUD operation of Author & Reviewers List, Match Papers with Reviewers, Turn off Paper & Review Submission|
