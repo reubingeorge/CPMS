@@ -77,17 +77,4 @@ The system will allow only three types of users who have the following privilege
 ---
 ### Setup
 
-..1. The first time you run the code of Visual Studio, run the sql query file named `CPMS Database Creation Script.sql`
-
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
-
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+1. The first time you run the code of Visual Studio, run the sql query file named `CPMS Database Creation Script.sql` ![alt text](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/run_sql_query.png?raw=true "Logo Title Text 1")
