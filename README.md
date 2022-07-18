@@ -28,7 +28,7 @@ The system will allow only three types of users who have the following privilege
 | Reviewer      | 
 | Administrator | 
 
-### Functional Requirements
+### Functional Requirements For Administrator
 
 | **Category** | **Priority** | **The system shall permit an Administrator to…**                 |
 |--------------|--------------|------------------------------------------------------------------|
@@ -47,6 +47,8 @@ The system will allow only three types of users who have the following privilege
 | Optional     | 1            | Maintain the author database table.                              |
 | Optional     | 1            | Maintain the reviews database table.                             |
 
+### Functional Requirements For Reviewer
+
 | **Category** | **Priority** | **The system shall permit a Reviewer to…** |
 |--------------|--------------|--------------------------------------------|
 | Mandatory    | 1            | Log in to account                          |
@@ -55,6 +57,8 @@ The system will allow only three types of users who have the following privilege
 | Mandatory    | 1            | Download papers matched with them          |
 | Mandatory    | 1            | Submit reviews for papers                  |
 | Mandatory    | 2            | Edit account information                   |
+
+### Functional Requirements For Author
 
 | **Category** | **Priority** | **The system shall permit an Author to...** |
 |--------------|--------------|---------------------------------------------|
