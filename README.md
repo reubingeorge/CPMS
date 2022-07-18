@@ -85,7 +85,6 @@ The system will allow only three types of users who have the following privilege
 ### Setup
 
 1. The first time you run the code on Visual Studio, run the sql query file named `CPMS Database Creation Script.sql`
-
 ![SQL QUERY](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/run_sql_query.png?raw=true "Running SQL Query to create a database")
 
 2. Ensure that the database has been created with the following tables in it. ![SQL Tables](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/database_creations.png?raw=true "Database Tables")
