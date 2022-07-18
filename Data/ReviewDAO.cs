@@ -125,7 +125,7 @@ namespace CPMS.Data
         /// available in the database from ONE particular reviewer.
         /// </summary>
         /// <param name="ReviewerID">ID of the reviewer (primary key in the database)</param>
-        /// <returns>a list of all reviews and corresponding made by a reviewer</returns>
+        /// <returns>a list of all reviews and corresponding paper made by a reviewer</returns>
         internal List<ReviewReviewerModel> FetchAllReviews(int ReviewerID)
         {
             List<ReviewReviewerModel> reviewReviewerList = new();
@@ -168,9 +168,86 @@ namespace CPMS.Data
 
                         PaperDAO paperDAO = new();
                         PaperModel paperModel = paperDAO.FetchOne(reviewReviewerModel.PaperID);
-
                         reviewReviewerModel.Title = paperModel.Title;
                         reviewReviewerModel.FilenameOriginal = paperModel.FilenameOriginal;
+                        
+
+                        AuthorDAO authorDAO = new();
+                        AuthorModel authorModel = authorDAO.FetchOne(paperModel.AuthorID);
+                        reviewReviewerModel.AuthorName = authorModel.FirstName + " " + authorModel.LastName;
+
+                        ReviewerDAO reviewerDAO = new();
+                        ReviewerModel reviewerModel = reviewerDAO.FetchOne(reviewReviewerModel.ReviewerID);
+                        reviewReviewerModel.ReviewerName = reviewerModel.FirstName + " " + reviewerModel.LastName;
+
+
+                        reviewReviewerList.Add(reviewReviewerModel);
+                    }
+                }
+            }
+            return reviewReviewerList;
+        }
+
+        /// <summary>
+        /// Method <c>FetchAllReviews</c> extracts a list of all reviews alongside the corresponding paper 
+        /// available in the database from ALL particular reviewer.
+        /// </summary>
+        /// <returns>a list of all reviews</returns>
+        internal List<ReviewReviewerModel> FetchAllReviews()
+        {
+            List<ReviewReviewerModel> reviewReviewerList = new();
+            using (SqlConnection sqlConnection = new(connectionString))
+            {
+                string sqlQuery = "SELECT * from dbo.Review";
+                SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
+                //sqlCommand.Parameters.Add("@ReviewerID", System.Data.SqlDbType.Int).Value = ReviewerID;
+                sqlConnection.Open();
+
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        ReviewReviewerModel reviewReviewerModel = new();
+                        reviewReviewerModel.ReviewID = dataReader.GetInt32(0);
+                        reviewReviewerModel.PaperID = dataReader.GetInt32(1);
+                        reviewReviewerModel.ReviewerID = dataReader.GetInt32(2);
+                        reviewReviewerModel.AppropriatenessOfTopic = dataReader.GetDecimal(3);
+                        reviewReviewerModel.TimelinessOfTopic = dataReader.GetDecimal(4);
+                        reviewReviewerModel.SupportiveEvidence = dataReader.GetDecimal(5);
+                        reviewReviewerModel.TechnicalQuality = dataReader.GetDecimal(6);
+                        reviewReviewerModel.ScopeOfCoverage = dataReader.GetDecimal(7);
+                        reviewReviewerModel.CitationOfPreviousWork = dataReader.GetDecimal(8);
+                        reviewReviewerModel.Originality = dataReader.GetDecimal(9);
+                        reviewReviewerModel.ContentComments = dataReader.IsDBNull(10) ? null : dataReader.GetString(10);
+                        reviewReviewerModel.OrganizationOfPaper = dataReader.GetDecimal(11);
+                        reviewReviewerModel.ClarityOfMainMessage = dataReader.GetDecimal(12);
+                        reviewReviewerModel.Mechanics = dataReader.GetDecimal(13);
+                        reviewReviewerModel.WrittenDocumentComments = dataReader.IsDBNull(14) ? null : dataReader.GetString(14);
+                        reviewReviewerModel.SuitabilityForPresentation = dataReader.GetDecimal(15);
+                        reviewReviewerModel.PotentialInterestInTopic = dataReader.GetDecimal(16);
+                        reviewReviewerModel.PotentialForOralPresentationComments = dataReader.IsDBNull(17) ? null : dataReader.GetString(17);
+                        reviewReviewerModel.OverallRating = dataReader.GetDecimal(18);
+                        reviewReviewerModel.OverallRatingComments = dataReader.IsDBNull(19) ? null : dataReader.GetString(19);
+                        reviewReviewerModel.ComfortLevelTopic = dataReader.GetDecimal(20);
+                        reviewReviewerModel.ComfortLevelAcceptability = dataReader.GetDecimal(21);
+                        reviewReviewerModel.Complete = dataReader.GetBoolean(22);
+
+                        PaperDAO paperDAO = new();
+                        PaperModel paperModel = paperDAO.FetchOne(reviewReviewerModel.PaperID);
+                        reviewReviewerModel.Title = paperModel.Title;
+                        reviewReviewerModel.FilenameOriginal = paperModel.FilenameOriginal;
+
+
+                        AuthorDAO authorDAO = new();
+                        AuthorModel authorModel = authorDAO.FetchOne(paperModel.AuthorID);
+                        reviewReviewerModel.AuthorName = authorModel.FirstName + " " + authorModel.LastName;
+
+                        ReviewerDAO reviewerDAO = new();
+                        ReviewerModel reviewerModel = reviewerDAO.FetchOne(reviewReviewerModel.ReviewerID);
+                        reviewReviewerModel.ReviewerName = reviewerModel.FirstName + " " + reviewerModel.LastName;
+
+
                         reviewReviewerList.Add(reviewReviewerModel);
                     }
                 }
@@ -226,10 +303,16 @@ namespace CPMS.Data
 
                         PaperDAO paperDAO = new();
                         PaperModel paperModel = paperDAO.FetchOne(reviewReviewerModel.PaperID);
-
                         reviewReviewerModel.Title = paperModel.Title;
                         reviewReviewerModel.FilenameOriginal = paperModel.FilenameOriginal;
 
+                        AuthorDAO authorDAO = new();
+                        AuthorModel authorModel = authorDAO.FetchOne(paperModel.AuthorID);
+                        reviewReviewerModel.AuthorName = authorModel.FirstName + " " + authorModel.LastName;
+
+                        ReviewerDAO reviewerDAO = new();
+                        ReviewerModel reviewerModel = reviewerDAO.FetchOne(reviewReviewerModel.ReviewerID);
+                        reviewReviewerModel.ReviewerName = reviewerModel.FirstName + " " + reviewerModel.LastName;
                     }
                 }
             }
@@ -331,5 +414,17 @@ namespace CPMS.Data
             return newID;
         }
 
+
+        internal void Delete(int id)
+        {
+            using (SqlConnection sqlConnection = new(connectionString))
+            {
+                string sqlQuery = "DELETE from dbo.Review WHERE ReviewID = @id";
+                SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
+                sqlCommand.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
     }
 }

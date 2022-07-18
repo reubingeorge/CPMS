@@ -1,0 +1,226 @@
+﻿@model CPMS.Models.ReviewReviewerModel
+
+<div>
+
+    <dl class="row">
+        <dt class = "col-sm-4 h6" >
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt class = "col-sm-8 h6" hidden>
+            @Html.DisplayNameFor(model => model.FilenameOriginal)
+        </dt>
+        <dd class = "col-sm-4" hidden>
+            @Html.DisplayFor(model => model.FilenameOriginal)
+        </dd>
+
+        <dt class = "col-sm-4 h6">
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.AuthorName)
+        </dd>
+
+        <dt class = "col-sm-4 h6">
+            @Html.DisplayNameFor(model => model.ReviewerName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.ReviewerName)
+        </dd>
+
+        <dt class = "col-sm-8 h6" hidden>
+            @Html.DisplayNameFor(model => model.ReviewID)
+        </dt>
+        <dd class = "col-sm-4" hidden>
+            @Html.DisplayFor(model => model.ReviewID)
+        </dd>
+
+        <dt class = "col-sm-8 h6" hidden>
+            @Html.DisplayNameFor(model => model.PaperID)
+        </dt>
+        <dd class = "col-sm-4" hidden>
+            @Html.DisplayFor(model => model.PaperID)
+        </dd>
+
+        <dt class = "col-sm-8 h6" hidden>
+            @Html.DisplayNameFor(model => model.ReviewerID)
+        </dt>
+        <dd class = "col-sm-4" hidden>
+            @Html.DisplayFor(model => model.ReviewerID)
+        </dd>
+
+        <hr />
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.AppropriatenessOfTopic)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.AppropriatenessOfTopic)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.TimelinessOfTopic)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.TimelinessOfTopic)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.SupportiveEvidence)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.SupportiveEvidence)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.TechnicalQuality)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.TechnicalQuality)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.ScopeOfCoverage)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.ScopeOfCoverage)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.CitationOfPreviousWork)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.CitationOfPreviousWork)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.Originality)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Originality)
+        </dd>
+        
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.OrganizationOfPaper)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.OrganizationOfPaper)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.ClarityOfMainMessage)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.ClarityOfMainMessage)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.Mechanics)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Mechanics)
+        </dd>
+        
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.SuitabilityForPresentation)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.SuitabilityForPresentation)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.PotentialInterestInTopic)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.PotentialInterestInTopic)
+        </dd>
+        
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.OverallRating)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.OverallRating)
+        </dd>
+        
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.ComfortLevelTopic)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.ComfortLevelTopic)
+        </dd>
+
+        <dt class = "col-sm-8 h6">
+            @Html.DisplayNameFor(model => model.ComfortLevelAcceptability)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.ComfortLevelAcceptability)
+        </dd>
+
+        <dt class = "col-sm-8 h6" hidden>
+            @Html.DisplayNameFor(model => model.Complete)
+        </dt>
+        <dd class = "col-sm-4" hidden>
+            @Html.DisplayFor(model => model.Complete)
+        </dd>
+        @{
+            bool isContentCommentsEmpty         = string.IsNullOrEmpty(Model.ContentComments);
+            bool isWrittenDocumentCommentsEmpty = string.IsNullOrEmpty(Model.WrittenDocumentComments);
+            bool isPotentialCommentsEmpty       = string.IsNullOrEmpty(Model.PotentialForOralPresentationComments);
+            bool isOverallRatingCommentsEmpty   = string.IsNullOrEmpty(Model.OverallRatingComments);
+            bool isAllCommentsEmpty             = isContentCommentsEmpty && isWrittenDocumentCommentsEmpty 
+            && isPotentialCommentsEmpty && isOverallRatingCommentsEmpty;
+
+            if (!isAllCommentsEmpty)
+            {
+                <hr />
+            }
+
+            if (!isContentCommentsEmpty)
+            {
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="floatingTextarea2" disabled>@Html.DisplayFor(model => model.ContentComments)</textarea>
+                    <label for="floatingTextarea2">
+                        @Html.DisplayNameFor(model => model.ContentComments)
+                    </label>
+                </div>
+            }
+
+            if (!isWrittenDocumentCommentsEmpty)
+            {
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="floatingTextarea2" disabled>@Html.DisplayFor(model => model.WrittenDocumentComments)</textarea>
+                    <label for="floatingTextarea2">
+                        @Html.DisplayNameFor(model => model.WrittenDocumentComments)
+                    </label>
+                </div>
+            }
+
+            if (!isPotentialCommentsEmpty)
+            {
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="floatingTextarea2" disabled>@Html.DisplayFor(model => model.PotentialForOralPresentationComments)</textarea>
+                    <label for="floatingTextarea2">
+                        @Html.DisplayNameFor(model => model.PotentialForOralPresentationComments)
+                    </label>
+                </div>
+            }
+
+            if (!isOverallRatingCommentsEmpty)
+            {
+                <div class="form-floating">
+                    <textarea class="form-control" id="floatingTextarea2" disabled>@Html.DisplayFor(model => model.OverallRatingComments)</textarea>
+                    <label for="floatingTextarea2">
+                        @Html.DisplayNameFor(model => model.OverallRatingComments)
+                    </label>
+                </div>
+            }
+
+        }
+        
+
+    </dl>
+</div>
+

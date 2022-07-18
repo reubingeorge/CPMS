@@ -20,18 +20,18 @@ namespace CPMS.Controllers
         public IActionResult Index()
         {
             ReviewDAO reviewDAO = new();
-            //if(User.IsInRole("Reviewer")){
+            if(User.IsInRole("Reviewer")){
                 int reviewerID;
                 _ = int.TryParse(User.FindFirst("ReviewerId")?.Value, out reviewerID);
                 return View("Index", reviewDAO.FetchAllReviews(reviewerID));
-            //}
+            }
 
-            /*if (User.IsInRole("Admin"))
+            if (User.IsInRole("Admin"))
             {
-                return View("Index", reviewDAO.FetchAll());
-            }*/
+                return View("Index", reviewDAO.FetchAllReviews());
+            }
 
-            //return View("Error", "Home");
+            return View("Error", "Home");
         }
 
         /// <summary>
@@ -69,7 +69,17 @@ namespace CPMS.Controllers
             _ = int.TryParse(User.FindFirst("ReviewerId")?.Value, out reviewerID);
             ReviewDAO reviewDAO = new();
             reviewDAO.CreateOrUpdate(reviewReviewerModel);
-            return View("Index", reviewDAO.FetchAllReviews(reviewerID));
+            if (User.IsInRole("Reviewer"))
+            {
+                return View("Index", reviewDAO.FetchAllReviews(reviewerID));
+            }
+
+            if (User.IsInRole("Admin"))
+            {
+                return View("Index", reviewDAO.FetchAllReviews());
+            }
+
+            return View("Error", "Home");
         }
 
         /// <summary>
@@ -82,6 +92,39 @@ namespace CPMS.Controllers
             var FileVirtualPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "uploads/")) + fileName;
             byte[] bytes = System.IO.File.ReadAllBytes(FileVirtualPath);
             return File(bytes, "application/octet-stream", fileName);
+        }
+
+        /// <summary>
+        /// Method <c>Details</c> returns a view of a very specific review from the database.
+        /// </summary>
+        /// <param name="id">ID of the review (primary key in the database)</param>
+        /// <returns>an HTML page containing all the information of the requested review.</returns>
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Details (int id)
+        {
+            ReviewDAO reviewDAO = new();
+            return PartialView("Details", reviewDAO.FetchOne(id));
+        }
+
+        public IActionResult Delete(int id)
+        {
+            ReviewDAO reviewDAO = new();
+            reviewDAO.Delete(id);
+            if (User.IsInRole("Reviewer"))
+            {
+                int reviewerID;
+                _ = int.TryParse(User.FindFirst("ReviewerId")?.Value, out reviewerID);
+                return View("Index", reviewDAO.FetchAllReviews(reviewerID));
+            }
+
+            if (User.IsInRole("Admin"))
+            {
+                return View("Index", reviewDAO.FetchAllReviews());
+            }
+
+            return View("Error", "Home");
+
         }
     }
 }
