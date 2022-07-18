@@ -15,6 +15,9 @@
   
   <dt>Programming Languages</dt>
   <dd>C# (ASP.NET), Javascript/ jQuery, HTML, CSS (Bootstrap)</dd>
+  
+  <dt>Backstory</dt>
+  <dd>The Consortium for Computing Sciences in Colleges (CCSC) is a non-profit organization focused on promoting quality computing curricula and the effective use of computing in colleges and universities. The CCSC encourages the sharing of research, effective curricula, teaching expertise, and efficient technological applications in the classroom. Generally speaking, the CCSC is concerned with the advancement of curricular programs in Computer Science, Computer Information Systems, Software Engineering, and any other discipline in which software development is the focus. At its annual conference, they have a number of paper sessions, where professors (or sometimes others) present their research, teaching ideas, and so forth. All papers are judged according to the same standard. The paper has to be academically sound and be something of interest to the conference attendees. This is because any accepted paper is published in their journal—the Journal of Computing Sciences in Colleges—and the high quality and focus of this journal must be maintained.</dd>
 </dl>
 
 ---
