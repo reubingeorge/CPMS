@@ -15,6 +15,9 @@
   
   <dt>Programming Languages</dt>
   <dd>C# (ASP.NET), Javascript/ jQuery, HTML, CSS (Bootstrap)</dd>
+  
+  <dt>Backstory</dt>
+  <dd>The Consortium for Computing Sciences in Colleges (CCSC) is a non-profit organization focused on promoting quality computing curricula and the effective use of computing in colleges and universities. The CCSC encourages the sharing of research, effective curricula, teaching expertise, and efficient technological applications in the classroom. Generally speaking, the CCSC is concerned with the advancement of curricular programs in Computer Science, Computer Information Systems, Software Engineering, and any other discipline in which software development is the focus. At its annual conference, they have a number of paper sessions, where professors (or sometimes others) present their research, teaching ideas, and so forth. All papers are judged according to the same standard. The paper has to be academically sound and be something of interest to the conference attendees. This is because any accepted paper is published in their journal—the Journal of Computing Sciences in Colleges—and the high quality and focus of this journal must be maintained.</dd>
 </dl>
 
 ---
@@ -28,7 +31,7 @@ The system will allow only three types of users who have the following privilege
 | Reviewer      | 
 | Administrator | 
 
-### Functional Requirements
+### Functional Requirements For Administrator
 
 | **Category** | **Priority** | **The system shall permit an Administrator to…**                 |
 |--------------|--------------|------------------------------------------------------------------|
@@ -47,6 +50,8 @@ The system will allow only three types of users who have the following privilege
 | Optional     | 1            | Maintain the author database table.                              |
 | Optional     | 1            | Maintain the reviews database table.                             |
 
+### Functional Requirements For Reviewer
+
 | **Category** | **Priority** | **The system shall permit a Reviewer to…** |
 |--------------|--------------|--------------------------------------------|
 | Mandatory    | 1            | Log in to account                          |
@@ -55,6 +60,8 @@ The system will allow only three types of users who have the following privilege
 | Mandatory    | 1            | Download papers matched with them          |
 | Mandatory    | 1            | Submit reviews for papers                  |
 | Mandatory    | 2            | Edit account information                   |
+
+### Functional Requirements For Author
 
 | **Category** | **Priority** | **The system shall permit an Author to...** |
 |--------------|--------------|---------------------------------------------|
@@ -77,13 +84,14 @@ The system will allow only three types of users who have the following privilege
 ---
 ### Setup
 
-1. The first time you run the code on Visual Studio, run the sql query file named `CPMS Database Creation Script.sql` ![SQL QUERY](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/run_sql_query.png?raw=true "Running SQL Query to create a database")
+1. The first time you run the code on Visual Studio, run the sql query file named `CPMS Database Creation Script.sql`
+![SQL QUERY](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/run_sql_query.png?raw=true "Running SQL Query to create a database")
 
 2. Ensure that the database has been created with the following tables in it. ![SQL Tables](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/database_creations.png?raw=true "Database Tables")
 
 3. Navigate to the properties panel of the CPMS database. ![SQL DB Properites](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_properties.png?raw=true "SQL DB Properties Panel")
 
-4. Copy the connection string of the CPMS database. ![SQL DB Properites](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_connection_string.png?raw=true "SQL DB Connection String")
+4. Copy the connection string of the CPMS database. ![DB Connection String](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_connection_string.png?raw=true "SQL DB Connection String")
 
 5. Navigate to the `DAO.cs` file under the `Data` folder and paste the connection string between the quotes. ![DAO.cs file](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_DAO_connection_string.png?raw=true "Connection string in DAO.cs")
 
