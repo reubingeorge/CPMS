@@ -10,6 +10,8 @@
   <dt>Team</dt>
   <dd>Team 12 (Khoa Doan, Reubin George, [Andric Tam](https://github.com/andrictam) [I'm an inline-style link](https://www.google.com))</dd>
   
+  [I'm an inline-style link](https://www.google.com)
+  
   <dt>System Requirements</dt>
   <dd>Windows 10 (Any Edition), Visual Studio 2019 (or higher), MS SQL</dd>
   
