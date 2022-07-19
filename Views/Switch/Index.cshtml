@@ -4,17 +4,47 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/switch.css" />
+
+<h1 style="text-align:center;">Submission Control</h1>
+
+@* The following toggle button were copied directly from Marcus Connor's CodePen.
+    Check the following pen: https://codepen.io/marcusconnor/pen/QJNvMa
+*@
+<div class="container mt-5">
+    <div class="col-md-5 mx-auto">
+        <div class="row align-items-center">
+            <div class="col-8">
+                <label class="h5">Allow Paper Submission</label>
+            </div>
+            <div class="col-4">
+                <label class="rocker rocker-small">
+                    <input type="checkbox" id = "check_paper">
+                    <span class="switch-left">Yes</span>
+                    <span class="switch-right">No</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-8">
+                <label class="h5">Allow Review Submission</label>
+            </div>
+            <div class="col-4">
+                <label class="rocker rocker-small">
+                    <input type="checkbox" id = "check_review">
+                    <span class="switch-left">Yes</span>
+                    <span class="switch-right">No</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-<h1 style="text-align:center;">Paper and Review Submission Toggles</h1>
-
-@*<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-  <label class="form-check-label h6" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-</div>*@
 
 
-<table class="table table-striped table-bordered" id="author_table" style="width:100%">
+<table class="table table-striped table-bordered" id="author_table" style="width:100%" hidden>
     <thead>
         <tr>
             <th>Review Submission Enabled</th>
@@ -33,11 +63,21 @@
             <td style="width:20%;">
                 @using (Html.BeginForm("Toggle", "Switch"))
                 {
-                    <input type="submit" name="toggleBtn" value="Toggle Reviews" class="btn btn-outline-primary"/>
-                    <input type="submit" name="toggleBtn" value="Toggle Papers" class="btn btn-outline-info"/>
+                    <input type="submit" id = "review_btn" name="toggleBtn" value="Toggle Reviews" class="btn btn-outline-primary"/>
+                    <input type="submit" id = "paper_btn" name="toggleBtn" value="Toggle Papers" class="btn btn-outline-info"/>
                 }
             </td>
         </tr>
     </tbody>
 </table>
 
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#check_paper').prop('checked', @Model.EnabledAuthors.ToString().ToLower());
+            $('#check_review').prop('checked', @Model.EnabledReviewers.ToString().ToLower());
+            $("#check_paper").change(function() { $('#paper_btn').click(); });
+            $("#check_review").change(function() { $('#review_btn').click(); });
+        });
+    </script>
+}
