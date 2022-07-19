@@ -8,7 +8,7 @@
   <dd>The created system will automate the reviewer registration process, the author registration process, the paper submission process, the paper matching process, the paper distribution process, the paper review process, and the report generation process.</dd>
   
   <dt>Team</dt>
-  <dd>Team 12 (Khoa Doan, Reubin George, [Andric Tam](https://github.com/andrictam))</dd>
+  <dd>Team 12 (Khoa Doan, Reubin George, [Andric Tam](https://github.com/andrictam) [I'm an inline-style link](https://www.google.com))</dd>
   
   <dt>System Requirements</dt>
   <dd>Windows 10 (Any Edition), Visual Studio 2019 (or higher), MS SQL</dd>
