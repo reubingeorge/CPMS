@@ -96,3 +96,14 @@ The system will allow only three types of users who have the following privilege
 5. Navigate to the `DAO.cs` file under the `Data` folder and paste the connection string between the quotes. ![DAO.cs file](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_DAO_connection_string.png?raw=true "Connection string in DAO.cs")
 
 6. In the Menu Bar, navigate to Build and click build to ensure that no errors are created. ![Successful Build](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/successful_build.png?raw=true "Successful Build")
+
+---
+### Security Concerns
+
+1. The sign in controllers access <b>TWO</b> different tables to verify if a logged in user is either a reviewer or an author. Ideally, we want to access only <b>ONE</b> table to verify user authentication and role.
+
+2. Both Reviewer and Author table do not hash user's password.
+
+3. None of page that access the database checks whether a <b>VIABLE</b> and <b>VALID</b> connection to the SQL database exists. 
+
+4. The reviewer and the author are allowed to create a password of max length of 5.
