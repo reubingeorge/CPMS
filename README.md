@@ -104,7 +104,7 @@ The system will allow only three types of users who have the following privilege
 
 2. Both Reviewer and Author table do not hash user's password.
 
-3. None of page that access the database checks whether a <b>VIABLE</b> and <b>VALID</b> connection to the SQL database exists. 
+3. None of page that accesses the database checks whether a <b>VIABLE</b> and <b>VALID</b> connection to the SQL database exists. 
 
 4. The reviewer and the author are allowed to create a password of max length of 5.
 
@@ -121,4 +121,4 @@ The system will allow only three types of users who have the following privilege
 
 5. We want to host the database on a server rather than use a localhost because every contributor needs to create a new database on the system with entirely new set of records for every table. 
 
-6. No integration, system, accceptance or production test were performed throughout the course of this project. 
+6. No integration, system, accceptance or production tests were performed throughout the course of this project. 
