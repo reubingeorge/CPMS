@@ -1,22 +1,24 @@
 # Conference Paper Management System (CPMS)
 
+### Project Description
+
 <dl>
-  <dt><h3>Preface</h3></dt>
+  <dt><h4>Preface</h4></dt>
   <dd>This project is an assignment created for USF's CEN 4020 (Software Engineering) Course.</dd>
   
-  <dt><h3>Objective</h3></dt>
+  <dt><h4>Objective</h4></dt>
   <dd>The created system will automate the reviewer registration process, the author registration process, the paper submission process, the paper matching process, the paper distribution process, the paper review process, and the report generation process.</dd>
   
-  <dt><h3>Team</h3></dt>
+  <dt><h4>Team</h4></dt>
   <dd>Team 12 (<a href="https://github.com/KDchimken12">Khoa Doan</a>, <a href = "https://github.com/reubingeorge">Reubin George</a>, <a href="https://github.com/andrictam">Andric Tam</a>)</dd>
   
-  <dt><h3>System Requirements</h3></dt>
+  <dt><h4>System Requirements</h4></dt>
   <dd>Windows 10 (Any Edition), Visual Studio 2019 (or higher), MS SQL</dd>
   
-  <dt><h3>Programming Languages</h3></dt>
+  <dt><h4>Programming Languages</h4></dt>
   <dd>C# (ASP.NET), Javascript/ jQuery, HTML, CSS (Bootstrap)</dd>
   
-  <dt><h3>Backstory</h3></dt>
+  <dt><h4>Backstory</h4></dt>
   <dd>The Consortium for Computing Sciences in Colleges (CCSC) is a non-profit organization focused on promoting quality computing curricula and the effective use of computing in colleges and universities. The CCSC encourages the sharing of research, effective curricula, teaching expertise, and efficient technological applications in the classroom. Generally speaking, the CCSC is concerned with the advancement of curricular programs in Computer Science, Computer Information Systems, Software Engineering, and any other discipline in which software development is the focus. At its annual conference, they have a number of paper sessions, where professors (or sometimes others) present their research, teaching ideas, and so forth. All papers are judged according to the same standard. The paper has to be academically sound and be something of interest to the conference attendees. This is because any accepted paper is published in their journal—the Journal of Computing Sciences in Colleges—and the high quality and focus of this journal must be maintained.</dd>
 </dl>
 
