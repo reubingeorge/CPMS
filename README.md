@@ -1,7 +1,7 @@
 # Conference Paper Management System (CPMS)
 
 <dl>
-  <dt>Preface</dt>
+  <dt><h3>Preface</h3></dt>
   <dd>This project is an assignment created for USF's CEN 4020 (Software Engineering) Course.</dd>
   
   <dt>Objective</dt>
