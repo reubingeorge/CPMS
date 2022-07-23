@@ -107,3 +107,18 @@ The system will allow only three types of users who have the following privilege
 3. None of page that access the database checks whether a <b>VIABLE</b> and <b>VALID</b> connection to the SQL database exists. 
 
 4. The reviewer and the author are allowed to create a password of max length of 5.
+
+---
+### Potential Improvements
+
+1. The tables in this project are normalized to Norm Form 3. It might be better to normalize the table to Norm Form 4. The reason why this was not done in the first place was because the database template was provided by the instructor.
+
+2. We used Data Access Object to perform CRUD operations on the database. We should be using Entity Framework instead. 
+
+3. We should be using <a href="https://reactjs.org/">React</a> or <a href="https://angular.io/">Angular</a> to create the web components.
+
+4. We want to run WebAssembly using <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor">Blazor</a>. This will help add additional functionality without changing too much of the old code. 
+
+5. We want to host the database on a server rather than use a localhost because every contributor needs to create a new database on the system with entirely new set of records for every table. 
+
+6. No integration, system, accceptance or production test were performed throughout the course of this project. 
