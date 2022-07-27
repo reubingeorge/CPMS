@@ -86,18 +86,20 @@ The system will allow only three types of users who have the following privilege
 ---
 ### Setup
 
-1. The first time you run the code on Visual Studio, run the sql query file named `CPMS_Database.sql`
+1. Run Visual Studio as an Administrator ![VS Administrator](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/visual_studio_admin.png?raw=true "Running Visual Studio as an Administrator") 
+
+2. The first time you run the code on Visual Studio, run the sql query file named `CPMS_Database.sql`
 ![SQL QUERY](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/run_sql_query.png?raw=true "Running SQL Query to create a database")
 
-2. Ensure that the database has been created with the following tables in it. ![SQL Tables](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/database_creations.png?raw=true "Database Tables")
+3. Ensure that the database has been created with the following tables in it. ![SQL Tables](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/database_creations.png?raw=true "Database Tables")
 
-3. Navigate to the properties panel of the CPMS database. ![SQL DB Properites](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_properties.png?raw=true "SQL DB Properties Panel")
+4. Navigate to the properties panel of the CPMS database. ![SQL DB Properites](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_properties.png?raw=true "SQL DB Properties Panel")
 
-4. Copy the connection string of the CPMS database. ![DB Connection String](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_connection_string.png?raw=true "SQL DB Connection String")
+5. Copy the connection string of the CPMS database. ![DB Connection String](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_database_connection_string.png?raw=true "SQL DB Connection String")
 
-5. Navigate to the `DAO.cs` file under the `Data` folder and paste the connection string between the quotes. ![DAO.cs file](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_DAO_connection_string.png?raw=true "Connection string in DAO.cs")
+6. Navigate to the `DAO.cs` file under the `Data` folder and paste the connection string between the quotes. ![DAO.cs file](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/sql_DAO_connection_string.png?raw=true "Connection string in DAO.cs")
 
-6. In the Menu Bar, navigate to Build and click build to ensure that no errors are created. ![Successful Build](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/successful_build.png?raw=true "Successful Build")
+7. In the Menu Bar, navigate to Build and click build to ensure that no errors are created. ![Successful Build](https://github.com/reubingeorge/CPMS/blob/master/Screenshots/successful_build.png?raw=true "Successful Build")
 
 ---
 ### Security Concerns
@@ -110,6 +112,7 @@ The system will allow only three types of users who have the following privilege
 
 4. The reviewer and the author are allowed to create a password of max length of 5.
 
+5. The `Report Controller` initially deletes old reports to create new reports. This method <b>ONLY</b> works if the program has permission to do so by both the OS and the Anti-Virus software running in the background.
 ---
 ### Potential Improvements
 
@@ -123,4 +126,4 @@ The system will allow only three types of users who have the following privilege
 
 5. We want to host the database on a server rather than use a localhost because every contributor needs to create a new database on the system with entirely new set of records for every table. 
 
-6. No integration, system, accceptance or production tests were performed throughout the course of this project. 
+6. No integration, system, acceptance or production tests were performed throughout the course of this project. 
