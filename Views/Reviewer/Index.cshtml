@@ -5,8 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="~/lib/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.css"/>
+@*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/lib/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.css"/>*@
+<link rel="stylesheet" href = "https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.css" />
 <link rel="stylesheet" href="~/lib/fontawesome/css/all.css" />
 <h1 style="text-align:center;">Reviewer</h1>
 
@@ -19,12 +20,6 @@
 <table class="table table-striped table-bordered" id="reviewer_table" style="width:100%">
     <thead>
         <tr>
-            @*<th>
-                @Html.DisplayNameFor(model => model.ReviewerID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
@@ -34,141 +29,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Affiliation)
-            </th>*@
+
             <th>
                 @Html.DisplayNameFor(model => model.Department)
             </th>
-           @* <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ZipCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>*@
+
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnalysisOfAlgorithms)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Applications)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Architecture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ArtificialIntelligence)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ComputerEngineering)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Curriculum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataStructures)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Databases)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DistanceLearning)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DistributedSystems)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EthicalSocietalIssues)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstYearComputing)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GenderIssues)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GrantWriting)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GraphicsImageProcessing)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HumanComputerInteraction)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LaboratoryEnvironments)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Literacy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MathematicsInComputing)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Multimedia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NetworkingDataCommunications)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NonMajorCourses)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ObjectOrientedIssues)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OperatingSystems)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParallelProcessing)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pedagogy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProgrammingLanguages)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Research)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Security)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SoftwareEngineering)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SystemsAnalysisAndDesign)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsingTechnologyInTheClassroom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WebAndInternetProgramming)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Other)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OtherDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReviewsAcknowledged)
-            </th>*@
             <th>Action</th>
         </tr>
     </thead>
@@ -229,8 +97,13 @@
 </div>
 
 @section scripts{
-    <script src="~/lib/datatables/DataTables-1.12.1/js/jquery.dataTables.js"></script>
+    @*<script src="~/lib/datatables/DataTables-1.12.1/js/jquery.dataTables.js"></script>
     <script src="~/lib/datatables/DataTables-1.12.1//js/dataTables.bootstrap5.js"></script>
-    <script src = "~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src = "~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>*@
+    <script src = "https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" ></script>
+    <script src = "https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.js" 
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
+            crossorigin="anonymous"></script>
     <script src="~/js/reviewer.js"></script>
 }

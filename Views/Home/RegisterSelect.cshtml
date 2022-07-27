@@ -4,23 +4,21 @@
 }
 
 <div class="container">
-    @*<main role="main" class="pb-3">*@
-        @*<div class="col-md-4">*@
-            <div class="card mx-auto mt-3 border-primary w-50">
-                <div class="card-header">
-                    Register
-                </div>
-                <div class="card-body">
-                    <a href=@Url.Action("RegisterAuthor") class="btn btn-outline-primary">
-                        I am an Author
-                        @*<input type="button" class="btn-primary" value="I am an author"/>*@
-                    </a>
-                    <a href=@Url.Action("RegisterReviewer") class="btn btn-outline-primary float-end">
-                        I am a Reviewer
-                        @*<input type="button" class="btn-primary" value="I am a reviewer"/>*@
-                    </a>
-                </div>
-            </div>
-        @*</div>*@
-    @*</main>*@
+
+    <div class="card mx-auto mt-3 border-primary w-50">
+        <div class="card-header">
+            Register
+        </div>
+        <div class="card-body">
+            <a href=@Url.Action("RegisterAuthor") class="btn btn-outline-primary">
+                I am an Author
+                @*<input type="button" class="btn-primary" value="I am an author"/>*@
+            </a>
+            <a href=@Url.Action("RegisterReviewer") class="btn btn-outline-primary float-end">
+                I am a Reviewer
+                @*<input type="button" class="btn-primary" value="I am a reviewer"/>*@
+            </a>
+        </div>
+    </div>
+ 
 </div>

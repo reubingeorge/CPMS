@@ -6,59 +6,59 @@
 
 <h1>Reports</h1>
 
-@*<div class="row g-0">*@
-  <form action="Report/DownloadAuthor" method="POST">
-      <table class="table mt-5">
-          <thead>
-              <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Report</th>
-                  <th scope="col">Action</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <th scope="row">1</th>
-                  <td>Author Report</td>
-                  <td>
-                      @Html.ActionLink("Download", "DownloadFile", new { report = "author"}, new{@class = "btn btn-outline-primary"})
-                      @*<input type="submit" class="btn btn-outline-primary" value="Download"/>*@
-                  </td>
-              </tr>
-              <tr>
-                  <th scope="row">2</th>
-                  <td>Reviewer Report</td>
-                  <td>
-                      @Html.ActionLink("Download", "DownloadFile", new { report = "reviewer"}, new{@class = "btn btn-outline-primary"})
-                      @*<input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviewer" value="Download"/>*@
-                  </td>
-              </tr>
-              <tr>
-                  <th scope="row">3</th>
-                  <td>Paper Reviews Report</td>
-                  <td>
-                      @Html.ActionLink("Download", "DownloadFile", new { report = "review"}, new{@class = "btn btn-outline-primary"})
-                      @*<input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviews" value="Download"/>*@
-                  </td>
-              </tr>
-              <tr>
-                  <th scope="row">4</th>
-                  <td>Paper Review Summary Report</td>
-                  <td>
-                      @Html.ActionLink("Download", "DownloadFile", new { report = "review summary"}, new{@class = "btn btn-outline-primary"})
-                      @*<input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviewSummary" value="Download"/>*@
-                  </td>
-              </tr>
-              <tr>
-                  <th scope="row">5</th>
-                  <td>Reviewer Comments Report</td>
-                  <td>
-                      @Html.ActionLink("Download", "DownloadFile", new { report = "review comments"}, new{@class = "btn btn-outline-primary"})
-                      @*<input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviewerComments" value="Download"/>*@
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-  </form>
-@*</div>*@
+
+<form action="Report/DownloadAuthor" method="POST">
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Report</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Author Report</td>
+                <td>
+                    @Html.ActionLink("Download", "DownloadFile", new { report = "author"}, new{@class = "btn btn-outline-primary"})
+                    @*<input type="submit" class="btn btn-outline-primary" value="Download"/>*@
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Reviewer Report</td>
+                <td>
+                    @Html.ActionLink("Download", "DownloadFile", new { report = "reviewer"}, new{@class = "btn btn-outline-primary"})
+                    @*<input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviewer" value="Download"/>*@
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Paper Reviews Report</td>
+                <td>
+                    @Html.ActionLink("Download", "DownloadFile", new { report = "review"}, new{@class = "btn btn-outline-primary"})
+                    @*<input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviews" value="Download"/>*@
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Paper Review Summary Report</td>
+                <td>
+                    @Html.ActionLink("Download", "DownloadFile", new { report = "review summary"}, new{@class = "btn btn-outline-primary"})
+                    @*<input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviewSummary" value="Download"/>*@
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>Reviewer Comments Report</td>
+                <td>
+                    @Html.ActionLink("Download", "DownloadFile", new { report = "review comments"}, new{@class = "btn btn-outline-primary"})
+                    @*<input type="submit" class="btn btn-outline-primary" formaction="Report/DownloadReviewerComments" value="Download"/>*@
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
 
