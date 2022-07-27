@@ -4,6 +4,9 @@ using CPMS.Models;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using OfficeOpenXml;
+using OfficeOpenXml.Drawing.Chart;
+using System;
 
 namespace CPMS.Controllers
 {
@@ -15,6 +18,7 @@ namespace CPMS.Controllers
     [Authorize(Roles = "Admin")]
     public class ReportController : Controller
     {
+
         /// <summary>
         /// Method <c>Index</c> returns a view of a page that allows users to download various files.
         /// </summary>
@@ -30,6 +34,7 @@ namespace CPMS.Controllers
         /// run on a Windows 10 OS because of the Excel file creation and download.
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
+        [Obsolete("This method is Windows dependent", true)]
         public IActionResult DownloadAuthor()
         {
             // Attempt to initialize Excel
@@ -95,6 +100,7 @@ namespace CPMS.Controllers
         /// run on a Windows 10 OS because of the Excel file creation and download.
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
+        [Obsolete("This method is Windows dependent", true)]
         public IActionResult DownloadReviewer()
         {
             // Attempt to initialize Excel
@@ -159,6 +165,7 @@ namespace CPMS.Controllers
         /// run on a Windows 10 OS because of the Excel file creation and download.
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
+        [Obsolete("This method is Windows dependent", true)]
         public IActionResult DownloadReviews()
         {
             // Attempt to initialize Excel
@@ -229,6 +236,7 @@ namespace CPMS.Controllers
         /// run on a Windows 10 OS because of the Excel file creation and download.
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
+        [Obsolete("This method is Windows dependent", true)]
         public IActionResult DownloadReviewSummary()
         {
             // Attempt to initialize Excel
@@ -318,6 +326,7 @@ namespace CPMS.Controllers
         /// run on a Windows 10 OS because of the Excel file creation and download.
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
+        [Obsolete("This method is Windows dependent", true)]
         public IActionResult DownloadReviewerComments()
         {
             // Attempt to initialize Excel
@@ -373,6 +382,335 @@ namespace CPMS.Controllers
             System.Runtime.InteropServices.Marshal.ReleaseComObject(xlApp);
 
             return RedirectToAction("Index");
+        }
+
+
+        /// <summary>
+        /// Method <c>GenerateAuthorReport</c> return a file of the Author Report.
+        /// </summary>
+        /// <returns></returns>
+        private static async Task GenerateAuthorReport()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            _ = System.IO.Directory.CreateDirectory("Report");
+            var file = new FileInfo(@"Report/AuthorReport.xlsx");
+            DeleteFile(file);
+            using var package = new ExcelPackage(file);
+            var worksheet = package.Workbook.Worksheets.Add("Main");
+            worksheet.Cells[1, 1].Value = "Last Name";
+            worksheet.Cells[1, 2].Value = "First Name";
+            worksheet.Cells[1, 3].Value = "Middle Initial";
+            worksheet.Cells[1, 4].Value = "Affiliation";
+            worksheet.Cells[1, 5].Value = "Department";
+            worksheet.Cells[1, 6].Value = "Address";
+            worksheet.Cells[1, 7].Value = "City";
+            worksheet.Cells[1, 8].Value = "State";
+            worksheet.Cells[1, 9].Value = "Zip Code";
+            worksheet.Cells[1, 10].Value = "Phone Number";
+            worksheet.Cells[1, 11].Value = "Email Address";
+
+            AuthorDAO authorDAO = new();
+            List<AuthorModel> authorModels = authorDAO.FetchAll();
+            for (int i = 0; i < authorModels.Count; i++)
+            {
+                worksheet.Cells[i + 2, 1].Value = authorModels[i].LastName;
+                worksheet.Cells[i + 2, 2].Value = authorModels[i].FirstName;
+                worksheet.Cells[i + 2, 3].Value = authorModels[i].MiddleInitial;
+                worksheet.Cells[i + 2, 4].Value = authorModels[i].Affiliation;
+                worksheet.Cells[i + 2, 5].Value = authorModels[i].Department;
+                worksheet.Cells[i + 2, 6].Value = authorModels[i].Address;
+                worksheet.Cells[i + 2, 7].Value = authorModels[i].City;
+                worksheet.Cells[i + 2, 8].Value = authorModels[i].State;
+                worksheet.Cells[i + 2, 9].Value = authorModels[i].ZipCode;
+                worksheet.Cells[i + 2, 10].Value = authorModels[i].PhoneNumber;
+                worksheet.Cells[i + 2, 11].Value = authorModels[i].Email;
+            }
+            await package.SaveAsync();
+
+        }
+
+        /// <summary>
+        /// Method <c>GenerateReviewerReport</c> return a file of the Reviewer Report.
+        /// </summary>
+        /// <returns></returns>
+        private static async Task GenerateReviewerReport()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            _ = System.IO.Directory.CreateDirectory("Report");
+            var file = new FileInfo(@"Report/ReviewerReport.xlsx");
+            DeleteFile(file);
+            using var package = new ExcelPackage(file);
+            var worksheet = package.Workbook.Worksheets.Add("Main");
+            worksheet.Cells[1, 1].Value = "Last Name";
+            worksheet.Cells[1, 2].Value = "First Name";
+            worksheet.Cells[1, 3].Value = "Middle Initial";
+            worksheet.Cells[1, 4].Value = "Affiliation";
+            worksheet.Cells[1, 5].Value = "Department";
+            worksheet.Cells[1, 6].Value = "Address";
+            worksheet.Cells[1, 7].Value = "City";
+            worksheet.Cells[1, 8].Value = "State";
+            worksheet.Cells[1, 9].Value = "Zip Code";
+            worksheet.Cells[1, 10].Value = "Phone Number";
+            worksheet.Cells[1, 11].Value = "Email Address";
+
+            ReviewerDAO reviewerDAO = new();
+            List<ReviewerModel> reviewerModels = reviewerDAO.FetchAll();
+            for (int i = 0; i < reviewerModels.Count; i++)
+            {
+                worksheet.Cells[i + 2, 1].Value = reviewerModels[i].LastName;
+                worksheet.Cells[i + 2, 2].Value = reviewerModels[i].FirstName;
+                worksheet.Cells[i + 2, 3].Value = reviewerModels[i].MiddleInitial;
+                worksheet.Cells[i + 2, 4].Value = reviewerModels[i].Affiliation;
+                worksheet.Cells[i + 2, 5].Value = reviewerModels[i].Department;
+                worksheet.Cells[i + 2, 6].Value = reviewerModels[i].Address;
+                worksheet.Cells[i + 2, 7].Value = reviewerModels[i].City;
+                worksheet.Cells[i + 2, 8].Value = reviewerModels[i].State;
+                worksheet.Cells[i + 2, 9].Value = reviewerModels[i].ZipCode;
+                worksheet.Cells[i + 2, 10].Value = reviewerModels[i].PhoneNumber;
+                worksheet.Cells[i + 2, 11].Value = reviewerModels[i].Email;
+            }
+            await package.SaveAsync();
+        }
+
+        /// <summary>
+        /// Method <c>GenerateReviewReport</c> return a file of the Review Report.
+        /// </summary>
+        /// <returns></returns>
+        private static async Task GenerateReviewReport()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            _ = System.IO.Directory.CreateDirectory("Report");
+            var file = new FileInfo(@"Report/PaperReviewsSheet.xlsx");
+            DeleteFile(file);
+            using var package = new ExcelPackage(file);
+            var worksheet = package.Workbook.Worksheets.Add("Main");
+            worksheet.Cells[1, 1].Value = "Paper Number";
+            worksheet.Cells[1, 2].Value = "Appropriateness of Topic";
+            worksheet.Cells[1, 3].Value = "Timeliness of Topic";
+            worksheet.Cells[1, 4].Value = "Supportive Evidence";
+            worksheet.Cells[1, 5].Value = "Technical Quality";
+            worksheet.Cells[1, 6].Value = "Scope of Coverage";
+            worksheet.Cells[1, 7].Value = "Citation of Previous Work";
+            worksheet.Cells[1, 8].Value = "Originality";
+            worksheet.Cells[1, 9].Value = "Organization of Paper";
+            worksheet.Cells[1, 10].Value = "Clarity of Main Message";
+            worksheet.Cells[1, 11].Value = "Mechanics";
+            worksheet.Cells[1, 12].Value = "Suitability for Presentation";
+            worksheet.Cells[1, 13].Value = "Potential Interest in Topic";
+            worksheet.Cells[1, 14].Value = "Overall Rating";
+
+            // Fetch and populate review data
+            ReviewDAO reviewDAO = new();
+            List<ReviewModel> reviewModels = reviewDAO.FetchAll();
+
+            for (int i = 0; i < reviewModels.Count; i++)
+            {
+                worksheet.Cells[i + 2, 1].Value = reviewModels[i].PaperID;
+                worksheet.Cells[i + 2, 2].Value = reviewModels[i].AppropriatenessOfTopic;
+                worksheet.Cells[i + 2, 3].Value = reviewModels[i].TimelinessOfTopic;
+                worksheet.Cells[i + 2, 4].Value = reviewModels[i].SupportiveEvidence;
+                worksheet.Cells[i + 2, 5].Value = reviewModels[i].TechnicalQuality;
+                worksheet.Cells[i + 2, 6].Value = reviewModels[i].ScopeOfCoverage;
+                worksheet.Cells[i + 2, 7].Value = reviewModels[i].CitationOfPreviousWork;
+                worksheet.Cells[i + 2, 8].Value = reviewModels[i].Originality;
+                worksheet.Cells[i + 2, 9].Value = reviewModels[i].OrganizationOfPaper;
+                worksheet.Cells[i + 2, 10].Value = reviewModels[i].ClarityOfMainMessage;
+                worksheet.Cells[i + 2, 11].Value = reviewModels[i].Mechanics;
+                worksheet.Cells[i + 2, 12].Value = reviewModels[i].SuitabilityForPresentation;
+                worksheet.Cells[i + 2, 13].Value = reviewModels[i].PotentialInterestInTopic;
+                worksheet.Cells[i + 2, 14].Value = reviewModels[i].OverallRating;
+            }
+            await package.SaveAsync();
+        }
+
+        /// <summary>
+        /// Method <c>GenerateReviewSummaryReport</c> return a file of the Review Summary Report.
+        /// </summary>
+        /// <returns></returns>
+        private static async Task GenerateReviewSummaryReport()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            _ = System.IO.Directory.CreateDirectory("Report");
+            var file = new FileInfo(@"Report/PaperReviewSummaryReport.xlsx");
+            DeleteFile(file);
+            using var package = new ExcelPackage(file);
+            var worksheet = package.Workbook.Worksheets.Add("Main");
+            worksheet.Cells["B1:P1"].EntireColumn.Style.Numberformat.Format = "#.00";
+
+            worksheet.Cells[1, 1].Value     = "Title";
+            worksheet.Cells[1, 2].Value     = "Appropriateness of Topic";
+            worksheet.Cells[1, 3].Value     = "Timeliness of Topic";
+            worksheet.Cells[1, 4].Value     = "Supportive Evidence";
+            worksheet.Cells[1, 5].Value     = "Technical Quality";
+            worksheet.Cells[1, 6].Value     = "Scope of Coverage";
+            worksheet.Cells[1, 7].Value     = "Citation of Previous Work";
+            worksheet.Cells[1, 8].Value     = "Originality";
+            worksheet.Cells[1, 9].Value     = "Organization of Paper";
+            worksheet.Cells[1, 10].Value    = "Clarity of Main Message";
+            worksheet.Cells[1, 11].Value    = "Mechanics";
+            worksheet.Cells[1, 12].Value    = "Suitability for Presentation";
+            worksheet.Cells[1, 13].Value    = "Potential Interest in Topic";
+            worksheet.Cells[1, 14].Value    = "Overall Rating";
+            worksheet.Cells[1, 15].Value    = "File Name";
+            worksheet.Cells[1, 16].Value    = "Weighted Score";
+
+            ReportDAO reportDAO = new();
+            List<ReportInfoModel> reviewList = reportDAO.FetchReviewSummary();
+
+            int i;
+            for (i = 0; i < reviewList.Count; i++)
+            {
+                worksheet.Cells[i + 2, 1].Value     = reviewList[i].Paper.Title;
+                worksheet.Cells[i + 2, 2].Value     = reviewList[i].Review.AppropriatenessOfTopic;
+                worksheet.Cells[i + 2, 3].Value     = reviewList[i].Review.TimelinessOfTopic;
+                worksheet.Cells[i + 2, 4].Value     = reviewList[i].Review.SupportiveEvidence;
+                worksheet.Cells[i + 2, 5].Value     = reviewList[i].Review.TechnicalQuality;
+                worksheet.Cells[i + 2, 6].Value     = reviewList[i].Review.ScopeOfCoverage;
+                worksheet.Cells[i + 2, 7].Value     = reviewList[i].Review.CitationOfPreviousWork;
+                worksheet.Cells[i + 2, 8].Value     = reviewList[i].Review.Originality;
+                worksheet.Cells[i + 2, 9].Value     = reviewList[i].Review.OrganizationOfPaper;
+                worksheet.Cells[i + 2, 10].Value    = reviewList[i].Review.ClarityOfMainMessage;
+                worksheet.Cells[i + 2, 11].Value    = reviewList[i].Review.Mechanics;
+                worksheet.Cells[i + 2, 12].Value    = reviewList[i].Review.SuitabilityForPresentation;
+                worksheet.Cells[i + 2, 13].Value    = reviewList[i].Review.PotentialInterestInTopic;
+                worksheet.Cells[i + 2, 14].Value    = reviewList[i].Review.OverallRating;
+                worksheet.Cells[i + 2, 15].Value    = reviewList[i].Paper.Filename;
+                worksheet.Cells[i + 2, 16].Formula  = string.Format("=0.5*AVERAGE(B{0}:M{0})+0.5*N{0}", i + 2);
+            }
+
+            ExcelChart chart = worksheet.Drawings.AddChart("chtline", eChartType.ColumnClustered);
+
+            var rangeLabel = worksheet.Cells["O2"];
+            var range = worksheet.Cells["P2"];
+            
+            chart.Series.Add(range, rangeLabel);
+            chart.Series[0].Header = worksheet.Cells["P1"].Value.ToString();
+            chart.Title.Text = worksheet.Cells["P1"].Value.ToString();
+            chart.SetPosition(0, 0, 18, 5);
+            chart.YAxis.AddTitle("Weighted Score");
+            chart.YAxis.Title.Rotation = 270;
+            chart.XAxis.AddTitle("Paper Name");
+            chart.YAxis.MaxValue = 5;
+            chart.YAxis.MinValue = 0;
+            chart.YAxis.MinorTickMark = eAxisTickMark.None;
+            chart.SetSize(600, 300);
+
+            await package.SaveAsync();
+        }
+
+        /// <summary>
+        /// Method <c>GenerateReviewerComments</c> return a file of the Review Comment Report.
+        /// </summary>
+        /// <returns></returns>
+        private static async Task GenerateReviewerComments()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            _ = System.IO.Directory.CreateDirectory("Report");
+            var file = new FileInfo(@"Report/ReviewerCommentsReport.xlsx");
+            DeleteFile(file);
+            using var package = new ExcelPackage(file);
+            var worksheet = package.Workbook.Worksheets.Add("Main");
+
+            worksheet.Cells[1, 1].Value = "Last Name";
+            worksheet.Cells[1, 2].Value = "First Name";
+            worksheet.Cells[1, 3].Value = "Middle Initial";
+            worksheet.Cells[1, 4].Value = "Email Address";
+            worksheet.Cells[1, 5].Value = "File Name";
+            worksheet.Cells[1, 6].Value = "Title";
+            worksheet.Cells[1, 7].Value = "Content Comments";
+            worksheet.Cells[1, 8].Value = "Written Document Comments";
+            worksheet.Cells[1, 9].Value = "Potential for Oral Presentation Comments";
+            worksheet.Cells[1, 10].Value = "Overall Rating Comments";
+
+            ReportDAO reportDAO = new();
+            List<ReportInfoModel> reportInfoModels = reportDAO.FetchComments();
+
+            for (int i = 0; i < reportInfoModels.Count; i++)
+            {
+                worksheet.Cells[i + 2, 1].Value = reportInfoModels[i].Author.FirstName;
+                worksheet.Cells[i + 2, 2].Value = reportInfoModels[i].Author.LastName;
+                worksheet.Cells[i + 2, 3].Value = reportInfoModels[i].Author.MiddleInitial;
+                worksheet.Cells[i + 2, 4].Value = reportInfoModels[i].Author.Email;
+                worksheet.Cells[i + 2, 5].Value = reportInfoModels[i].Paper.Filename;
+                worksheet.Cells[i + 2, 6].Value = reportInfoModels[i].Paper.Title;
+                worksheet.Cells[i + 2, 7].Value = reportInfoModels[i].Review.ContentComments;
+                worksheet.Cells[i + 2, 8].Value = reportInfoModels[i].Review.WrittenDocumentComments;
+                worksheet.Cells[i + 2, 9].Value = reportInfoModels[i].Review.PotentialForOralPresentationComments;
+                worksheet.Cells[i + 2, 10].Value = reportInfoModels[i].Review.OverallRatingComments;
+            }
+
+            await package.SaveAsync();
+        }
+
+        /// <summary>
+        /// Method <c>DeleteFile</c> deletes a file if the file exists in the
+        /// specified folder.
+        /// </summary>
+        /// <param name="file">File object containing data including complete path and file name.</param>
+        private static void DeleteFile(FileInfo file)
+        {
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+        }
+
+        /// <summary>
+        /// Method <c>DownloadFile</c> lets the user download file from the server. 
+        /// </summary>
+        /// <param name="report">Report name that the user wants to download</param>
+        /// <returns>Report file (in excel format)</returns>
+        public async Task<FileResult> DownloadFile (string report)
+        {
+            Console.WriteLine("Downloading File");
+            string? fileName;
+            var possibleAction = report.ToLower();
+            switch (possibleAction)
+            {
+                case "author":
+                    fileName = "AuthorReport.xlsx";
+                    _ = GenerateAuthorReport();
+                    break;
+
+                case "reviewer":
+                    fileName = "ReviewerReport.xlsx";
+                    _ = GenerateReviewerReport();
+                    break;
+
+                case "review":
+                    fileName = "PaperReviewsSheet.xlsx";
+                    _ = GenerateReviewReport();
+                    break;
+
+                case "review summary":
+                    fileName = "PaperReviewSummaryReport.xlsx";
+                    _ = GenerateReviewSummaryReport();
+                    break;
+
+                case "review comments":
+                    fileName = "ReviewerCommentsReport.xlsx";
+                    _ = GenerateReviewerComments();
+                    break;
+
+                default:
+                    fileName = "";
+                    break;
+            }
+            var fileVirtualPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "Report/")) + fileName;
+            byte[] bytes;
+            try
+            {
+                bytes =  System.IO.File.ReadAllBytes(fileVirtualPath);
+            }
+
+            catch
+            {
+                Thread.Sleep(500); // easy way to prevent thread collision. 
+                using FileStream fileStream = System.IO.File.Open(fileVirtualPath, FileMode.Open);
+                bytes = new byte[fileStream.Length];
+                await fileStream.ReadAsync(bytes, 0, (int)fileStream.Length);
+            }
+            return File(bytes, "application/octet-stream", fileName);
         }
     }
 }

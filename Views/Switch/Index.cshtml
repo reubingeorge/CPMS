@@ -61,6 +61,8 @@
                 @Html.DisplayFor(modelItem => modelItem.EnabledAuthors)
             </td>
             <td style="width:20%;">
+                 @*@Html.ActionLink("Switch", "ToggleAction", new { toggleBtn = "Toggle Reviews"}, new{@class = "btn btn-outline-primary", @id = "review_btn"})
+                 @Html.ActionLink("Switch", "ToggleAction", new { toggleBtn = "Toggle Papers"}, new{@class = "btn btn-outline-info", @id = "paper_btn"})*@
                 @using (Html.BeginForm("Toggle", "Switch"))
                 {
                     <input type="submit" id = "review_btn" name="toggleBtn" value="Toggle Reviews" class="btn btn-outline-primary"/>
