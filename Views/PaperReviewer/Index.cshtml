@@ -1,182 +1,271 @@
-﻿@model IEnumerable<CPMS.Models.PaperModel>
+﻿@model IEnumerable<CPMS.Models.PaperReviewerModel>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+<style>
+    td > * 
+    {
+        vertical-align : middle;
+    }
+</style>
+<h1 style="text-align:center;">Match Submitted Papers with Reviewers</h1>
 
-<h1>Assignments</h1>
 
-<link rel="stylesheet" href="~/css/paper_reviewer.css" />
-<link rel="stylesheet" href="~/lib/multiselect/styles/multiselect.css" />
-
-<table class="table table-striped table-bordered" style="width:100%">
+<table class="table table-striped table-bordered" id="match_table" style="width:100%">
     <thead>
         <tr>
-            <th>
-                Papers
-            </th>
-            <th>
-               Possible Reviewers
-            </th>
-            <th>
-                Action
-            </th>
-            
+            <th>Paper Title</th>
+            <th>Reviewer 1</th>
+            <th>Reviewer 2</th>
+            <th>Reviewer 3</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                Khoa's Paper
-            </td>
-            <td>
-                <select class="form-select" multiple aria-label="multiple select example">
-                  <option selected>Choose 3 reviewers:</option>
-                  <option value="1">Andric Tam</option>
-                  <option value="2">Reubin George</option>
-                  <option value="3">Darth Vader</option>
-                </select>
-            </td>
-            <td>
-                <button type="button" class="btn btn-outline-primary" id="action-button">Submit</button>
-            </td>
-        </tr>
-@*@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaperID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilenameOriginal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Filename)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Certification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NotesToReviewers)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnalysisOfAlgorithms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Applications)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Architecture)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArtificialIntelligence)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ComputerEngineering)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Curriculum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataStructures)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Databases)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DistanceLearning)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DistributedSystems)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EthicalSocietalIssues)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstYearComputing)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GenderIssues)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GrantWriting)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GraphicsImageProcessing)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HumanComputerInteraction)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LaboratoryEnvironments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Literacy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MathematicsInComputing)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Multimedia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NetworkingDataCommunications)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NonMajorCourses)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ObjectOrientedIssues)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OperatingSystems)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParallelsProcessing)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pedagogy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgrammingLanguages)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Research)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Security)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoftwareEngineering)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SystemsAnalysisAndDesign)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsingTechnologyInTheClassroom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WebAndInternetProgramming)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Other)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OtherDescription)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}*@
+        
+        @{
+            //Method that creates the contents for Bootstrap5's Popover
+            Microsoft.AspNetCore.Html.IHtmlContent GeneratePopoverContent(Topics topics)
+            {
+                string popoverContent = "<ol class='list-group list-group-numbered'>";
+                if (topics.AnalysisOfAlgorithms)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.AnalysisOfAlgorithms) + "</li>";
+                }
+                if (topics.Applications)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.Applications) + "</li>";
+                }
+                if (topics.Architecture)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.Architecture) + "</li>";
+                }
+                if (topics.ArtificialIntelligence)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.ArtificialIntelligence) + "</li>";
+                }
+                if (topics.ComputerEngineering)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.ComputerEngineering) + "</li>";
+                }
+                if (topics.Curriculum)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.Curriculum) + "</li>";
+                }
+                if (topics.DataStructures)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.DataStructures) + "</li>";
+                }
+                if (topics.Databases)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.Databases) + "</li>";
+                }
+                if (topics.DistancedLearning)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.DistancedLearning) + "</li>";
+                }
+                if (topics.DistributedSystems)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.DistributedSystems) + "</li>";
+                }
+                if (topics.EthicalSocietalIssues)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.EthicalSocietalIssues) + "</li>";
+                }
+                if (topics.FirstYearComputing)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.FirstYearComputing) + "</li>";
+                }
+                if (topics.GenderIssues)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.GenderIssues) + "</li>";
+                }
+                if (topics.GrantWriting)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.GrantWriting) + "</li>";
+                }
+                if (topics.GraphicsImageProcessing)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.GraphicsImageProcessing) + "</li>";
+                }
+                if (topics.HumanComputerInteraction)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.HumanComputerInteraction) + "</li>";
+                }
+                if (topics.LaboratoryEnvironments)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.LaboratoryEnvironments) + "</li>";
+                }
+                if (topics.Literacy)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.Literacy) + "</li>";
+                }
+                if (topics.MathematicsInComputing)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.MathematicsInComputing) + "</li>";
+                }
+                if (topics.Multimedia)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.Multimedia) + "</li>";
+                }
+                if (topics.NetworkingDataCommunications)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.NetworkingDataCommunications) + "</li>";
+                }
+                if (topics.NonMajorCourses)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.NonMajorCourses) + "</li>";
+                }
+                if (topics.ObjectOrientedIssues)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.ObjectOrientedIssues) + "</li>";
+                }
+                if (topics.OperatingSystems)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.OperatingSystems) + "</li>";
+                }
+                if (topics.ParallelProcessing)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.ParallelProcessing) + "</li>";
+                }
+                if (topics.Pedagogy)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.Pedagogy) + "</li>";
+                }
+                if (topics.ProgrammingLanguages)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.ProgrammingLanguages) + "</li>";
+                }
+                if (topics.Research)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.Research) + "</li>";
+                }
+                if (topics.Security)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.Security) + "</li>";
+                }
+                if (topics.SoftwareEngineering)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.SoftwareEngineering) + "</li>";
+                }
+                if (topics.SystemsAnalysisAndDesign)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.SystemsAnalysisAndDesign) + "</li>";
+                }
+                if (topics.UsingTechnologyInTheClassroom)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.UsingTechnologyInTheClassroom) + "</li>";
+                }
+                if (topics.WebAndInternetProgramming)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayNameFor(model => topics.WebAndInternetProgramming) + "</li>";
+                }
+                if (topics.Other)
+                {
+                    popoverContent += "<li class='list-group-item'>" + Html.DisplayFor(model => topics.OtherDescription) + Html.Display(" (Other)") + "</li>";
+                }
+                popoverContent += "</ol>";
+                var contentHtml = "\"" + popoverContent + "\"";
+                return Html.Raw(contentHtml);
+                
+             }
+
+            foreach (var item in Model)
+            {
+                Console.WriteLine(GeneratePopoverContent(item.PaperModel));
+                    <tr>
+                        <td>
+                            <span data-bs-toggle="popover" title="Selected Topics" data-bs-content = @GeneratePopoverContent(item.PaperModel)>
+                                @Html.DisplayFor(modelItem => item.PaperModel.Title)
+                            </span>
+                        </td>
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <td>
+                                @{
+                                    if (item.AssignedReviewers.ElementAtOrDefault(i) != null)
+                                    {
+                                        var currentReviewer = item.AssignedReviewers[i];
+
+                                        var isMiddleInitial = string.IsNullOrWhiteSpace(currentReviewer.MiddleInitial);
+                                        string fullname;
+                                        if (isMiddleInitial)
+                                        {
+                                            fullname = currentReviewer.FirstName + " " + currentReviewer.MiddleInitial + " " + currentReviewer.LastName;
+                                        }
+                                        else
+                                        {
+                                            fullname = currentReviewer.FirstName + " " + currentReviewer.LastName;
+                                        }
+                                        <span data-bs-toggle="popover" title="Interested Topics" data-bs-content = @GeneratePopoverContent(currentReviewer)>@fullname</span>
+                                    }
+                                    else
+                                    {
+                                        <select class="form-select form-select" aria-label=".form-select example">
+                                            <option selected>Choose A Reviewer</option>
+                                            @{
+                                                foreach (var reviewer in item.AvailableReviewers)
+                                                {
+                                                    var isMiddleInitial = string.IsNullOrWhiteSpace(reviewer.MiddleInitial);
+                                                    string fullname;
+                                                    if (isMiddleInitial)
+                                                    {
+                                                        fullname = reviewer.FirstName + " " + reviewer.MiddleInitial + " " + reviewer.LastName;
+                                                    }
+                                                    else
+                                                    {
+                                                        fullname = reviewer.FirstName + " " + reviewer.LastName;
+                                                    }
+                                                    <option value=@reviewer.ReviewerID >@fullname</option>
+                                                }
+                                            }
+                                        </select> 
+                                    }
+                                }
+                            </td>
+                        }
+                    </tr>
+
+        }}
     </tbody>
 </table>
 
+@section scripts{
+    <script src = "https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" ></script>
+    <script src = "https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.js" 
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
+            crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#match_table').DataTable({
+                destroy: true,
+                paging: true,
+                scrollX: true,
+                lengthChange: true,
+                searching: true,
+                ordering: true
+            });
+
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(
+                    popoverTriggerEl, 
+                    {
+                        html    : true,
+                        trigger : 'hover'
+                    });
+            });
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+        });
+
+    </script>
+}

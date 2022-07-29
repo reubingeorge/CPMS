@@ -16,8 +16,10 @@ namespace CPMS.Models
         [Display(Name = "Original Title")]
         public string? FilenameOriginal { get; set; }
 
+
         [Display(Name = "Author Name")]
         public string? AuthorName { get; set; }
+
 
         [Display(Name = "Reviewer Name")]
         public string? ReviewerName { get; set; }

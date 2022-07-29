@@ -206,5 +206,71 @@ namespace CPMS.Data
 
             return newID;
         }
+
+        internal List<PaperModel> FetchAll()
+        {
+            List<PaperModel> paperList = new();
+            using (SqlConnection sqlConnection = new(connectionString))
+            {
+                string sqlQuery = "SELECT * from dbo.Paper";
+                SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
+                sqlConnection.Open();
+
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        PaperModel paperModel = new();
+                        paperModel.PaperID = dataReader.GetInt32(0);
+                        paperModel.AuthorID = dataReader.GetInt32(1);
+                        paperModel.Active = dataReader.GetBoolean(2);
+                        paperModel.FilenameOriginal = dataReader.GetString(3);
+                        paperModel.Filename = dataReader.GetString(4);
+                        paperModel.Title = dataReader.GetString(5);
+                        paperModel.Certification = dataReader.GetString(6);
+                        paperModel.NotesToReviewers = dataReader.GetString(7);
+                        paperModel.AnalysisOfAlgorithms = dataReader.GetBoolean(8);
+                        paperModel.Applications = dataReader.GetBoolean(9);
+                        paperModel.Architecture = dataReader.GetBoolean(10);
+                        paperModel.ArtificialIntelligence = dataReader.GetBoolean(11);
+                        paperModel.ComputerEngineering = dataReader.GetBoolean(12);
+                        paperModel.Curriculum = dataReader.GetBoolean(13);
+                        paperModel.DataStructures = dataReader.GetBoolean(14);
+                        paperModel.Databases = dataReader.GetBoolean(15);
+                        paperModel.DistancedLearning = dataReader.GetBoolean(16);
+                        paperModel.DistributedSystems = dataReader.GetBoolean(17);
+                        paperModel.EthicalSocietalIssues = dataReader.GetBoolean(18);
+                        paperModel.FirstYearComputing = dataReader.GetBoolean(19);
+                        paperModel.GenderIssues = dataReader.GetBoolean(20);
+                        paperModel.GrantWriting = dataReader.GetBoolean(21);
+                        paperModel.GraphicsImageProcessing = dataReader.GetBoolean(22);
+                        paperModel.HumanComputerInteraction = dataReader.GetBoolean(23);
+                        paperModel.LaboratoryEnvironments = dataReader.GetBoolean(24);
+                        paperModel.Literacy = dataReader.GetBoolean(25);
+                        paperModel.MathematicsInComputing = dataReader.GetBoolean(26);
+                        paperModel.Multimedia = dataReader.GetBoolean(27);
+                        paperModel.NetworkingDataCommunications = dataReader.GetBoolean(28);
+                        paperModel.NonMajorCourses = dataReader.GetBoolean(29);
+                        paperModel.ObjectOrientedIssues = dataReader.GetBoolean(30);
+                        paperModel.OperatingSystems = dataReader.GetBoolean(31);
+                        paperModel.ParallelProcessing = dataReader.GetBoolean(32);
+                        paperModel.Pedagogy = dataReader.GetBoolean(33);
+                        paperModel.ProgrammingLanguages = dataReader.GetBoolean(34);
+                        paperModel.Research = dataReader.GetBoolean(35);
+                        paperModel.Security = dataReader.GetBoolean(36);
+                        paperModel.SoftwareEngineering = dataReader.GetBoolean(37);
+                        paperModel.SystemsAnalysisAndDesign = dataReader.GetBoolean(38);
+                        paperModel.UsingTechnologyInTheClassroom = dataReader.GetBoolean(39);
+                        paperModel.WebAndInternetProgramming = dataReader.GetBoolean(40);
+                        paperModel.Other = dataReader.GetBoolean(41);
+                        paperModel.OtherDescription = dataReader.IsDBNull(42) ? null : dataReader.GetString(42);
+                        paperList.Add(paperModel);
+                    }
+                }
+            }
+
+            return paperList;
+        }
     }
 }

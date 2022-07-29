@@ -415,6 +415,10 @@ namespace CPMS.Data
         }
 
 
+        /// <summary>
+        /// Method <c>Delete</c> delete a review
+        /// </summary>
+        /// <param name="id">ID of the review (primary key in the database)</param>
         internal void Delete(int id)
         {
             using (SqlConnection sqlConnection = new(connectionString))
@@ -425,6 +429,53 @@ namespace CPMS.Data
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
             }
+        }
+
+
+        /// <summary>
+        /// Method <c>FetchAllAssignedReviewers</c> looks at the Review Table in the database and retrieves all 
+        /// the reviewers assigned to a specified paper along with the reviewer's corresponding data.
+        /// </summary>
+        /// <param name="paperID">ID of the paper (foreign key in the database)</param>
+        /// <returns>a list of all reviewers assigned to specified paper</returns>
+        internal List<ReviewerModel> FetchAllAssignedReviewers(int paperID)
+        {
+            List<ReviewerModel> reviewers = new();
+            using (SqlConnection sqlConnection = new(connectionString))
+            {
+                string sqlQuery = "SELECT ReviewerID from dbo.Review WHERE PaperID = @PaperID";
+                SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
+                sqlCommand.Parameters.Add("@PaperID", System.Data.SqlDbType.Int).Value = paperID;
+                sqlConnection.Open();
+
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        ReviewerDAO reviewerDAO = new();
+                        var potentialReviewerID = dataReader.GetInt32(0);
+                        ReviewerModel reviewer = reviewerDAO.FetchOne(potentialReviewerID);
+                        reviewers.Add(reviewer);
+                    }
+                }
+            }
+            return reviewers;
+        }
+
+
+        /// <summary>
+        /// Method <c>FetchAllAvailableReviewers</c> looks at the Review Table in the database and retrieves all 
+        /// the reviewers available to review the specified paper along with the reviewer's corresponding data.
+        /// </summary>
+        /// <param name="paperID">ID of the paper (foreign key in the database)</param>
+        /// <returns>a list of all available reviewers capable of reviewing the specified paper</returns>
+        internal List<ReviewerModel>FetchAllAvailableReviewers(int paperID)
+        {
+            ReviewerDAO reviewerDAO = new();
+            List<ReviewerModel> allReviewers = reviewerDAO.FetchAll();
+            List<ReviewerModel> assignedReviewers = FetchAllAssignedReviewers(paperID);
+            return allReviewers.Where(y => !assignedReviewers.Any(x => x.ReviewerID == y.ReviewerID)).ToList();
         }
     }
 }
