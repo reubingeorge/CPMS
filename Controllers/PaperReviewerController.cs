@@ -28,7 +28,7 @@ namespace CPMS.Controllers
                 PaperReviewerModel paperReviewerModel = new();
                 paperReviewerModel.PaperModel = paper;
                 List<ReviewerModel> assignedReviewers = reviewDAO.FetchAllAssignedReviewers(paper.PaperID);
-                if (assignedReviewers.Count is <= 3 and > 0) // we need to have at least 1 or a max of 3 reviewers
+                if (assignedReviewers.Count is <= 3 and > 0) // we need to have at least 1 and a max of 3 reviewers
                 {
                     paperReviewerModel.AssignedReviewers.AddRange(assignedReviewers);
                 }
@@ -38,6 +38,14 @@ namespace CPMS.Controllers
             return View("Index", papersAndReviewersList);
         }
 
+        /// <summary>
+        /// Method <c>Create</c> returns a view that shows the potential match between paper and reviewers.
+        /// </summary>
+        /// <param name="paperID">ID of paper</param>
+        /// <param name="select_0">ID of Reviewer 1 (can be null)</param>
+        /// <param name="select_1">ID of Reviewer 2 (can be null)</param>
+        /// <param name="select_2">ID of Reviewer 3 (can be null)</param>
+        /// <returns></returns>
         public IActionResult Create(int paperID, string? select_0, string? select_1, string? select_2)
         {
             ReviewDAO reviewDAO = new();
