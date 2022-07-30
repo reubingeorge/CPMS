@@ -5,7 +5,7 @@ namespace CPMS.Models
     /// <summary>
     /// Class <c>Topics</c> contains the topics that will be used by either Paper or Reviewer
     /// </summary>
-    public class Topics
+    public class TopicsModel
     {
         [Display(Name = "Analysis Of Algorithms")]
         public bool AnalysisOfAlgorithms { get; set; }

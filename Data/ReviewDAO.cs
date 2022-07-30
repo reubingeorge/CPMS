@@ -477,5 +477,20 @@ namespace CPMS.Data
             List<ReviewerModel> assignedReviewers = FetchAllAssignedReviewers(paperID);
             return allReviewers.Where(y => !assignedReviewers.Any(x => x.ReviewerID == y.ReviewerID)).ToList();
         }
+
+        internal int Create(ReviewModel reviewModel)
+        {
+            int newID = -1;
+            using (SqlConnection sqlConnection = new(connectionString))
+            {
+                var sqlQuery = "INSERT INTO dbo.Review (PaperID, ReviewerID) VALUES(@PaperID, @ReviewerID)";
+                SqlCommand sqlCommand = new(sqlQuery, sqlConnection);
+                sqlCommand.Parameters.Add("@PaperID", System.Data.SqlDbType.Int).Value = reviewModel.PaperID;
+                sqlCommand.Parameters.Add("@ReviewerID", System.Data.SqlDbType.Int).Value = reviewModel.ReviewerID;
+                sqlConnection.Open();
+                newID = sqlCommand.ExecuteNonQuery();
+            }
+            return newID;
+        }
     }
 }

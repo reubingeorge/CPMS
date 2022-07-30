@@ -5,7 +5,7 @@ namespace CPMS.Models
     /// <summary>
     /// Class <c>PaperModel</c> contains the model of a single paper.
     /// </summary>
-    public class PaperModel:Topics
+    public class PaperModel:TopicsModel
     {
         [Display(Name = "Paper ID")]
         [Range(1, 100000, ErrorMessage = "ID must be between 1 and 100000")]

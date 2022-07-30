@@ -37,5 +37,48 @@ namespace CPMS.Controllers
             }
             return View("Index", papersAndReviewersList);
         }
+
+        public IActionResult Create(int paperID, string? select_0, string? select_1, string? select_2)
+        {
+            ReviewDAO reviewDAO = new();
+            if (select_0 != null)
+            {
+                ReviewModel review = new()
+                {
+                    PaperID = paperID,
+                    ReviewerID = int.Parse(select_0)
+                };
+                reviewDAO.Create(review);
+            }
+            if (select_1 != null)
+            {
+                ReviewModel review = new()
+                {
+                    PaperID = paperID,
+                    ReviewerID = int.Parse(select_1)
+                };
+                reviewDAO.Create(review);
+            }
+            if (select_2 != null)
+            {
+                ReviewModel review = new()
+                {
+                    PaperID = paperID,
+                    ReviewerID = int.Parse(select_2)
+                };
+                reviewDAO.Create(review);
+            }
+            /*ReviewDAO reviewDAO= new();
+
+            foreach(var reviewerID in reviewerIDs)
+            {
+                ReviewModel review = new();
+                review.PaperID = paperID;
+                review.ReviewID = reviewerID;
+                reviewDAO.Create(review);
+            }*/
+            
+            return RedirectToAction("Index");
+        }
     }
 }

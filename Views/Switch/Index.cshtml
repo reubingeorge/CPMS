@@ -76,8 +76,9 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $('#check_paper').prop('checked', @Model.EnabledAuthors.ToString().ToLower());
-            $('#check_review').prop('checked', @Model.EnabledReviewers.ToString().ToLower());
+            console.log(@Model?.EnabledAuthors.ToString().ToLower());
+            $('#check_paper').prop('checked', @Model?.EnabledAuthors.ToString().ToLower());
+            $('#check_review').prop('checked', @Model?.EnabledReviewers.ToString().ToLower());
             $("#check_paper").change(function() { $('#paper_btn').click(); });
             $("#check_review").change(function() { $('#review_btn').click(); });
         });

@@ -4,7 +4,7 @@ namespace CPMS.Models
     /// <summary>
     /// Class <c>ReviewerModel</c> depicts the model of any individual reviewer.
     /// </summary>
-    public class ReviewerModel : Topics
+    public class ReviewerModel : TopicsModel
     {
         [Display(Name = "ID")]
         [Range(1, 100000, ErrorMessage = "ID must be between 1 and 100000")]
