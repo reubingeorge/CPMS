@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using OfficeOpenXml;
 using OfficeOpenXml.Drawing.Chart;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CPMS.Controllers
 {
@@ -35,6 +36,7 @@ namespace CPMS.Controllers
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         [Obsolete("This method is Windows dependent", true)]
+        [SuppressMessage("Usage", "CA1416:Validate platform compatibility", Justification = "Not production code.")]
         public IActionResult DownloadAuthor()
         {
             // Attempt to initialize Excel
@@ -101,6 +103,7 @@ namespace CPMS.Controllers
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         [Obsolete("This method is Windows dependent", true)]
+        [SuppressMessage("Usage", "CA1416:Validate platform compatibility", Justification = "Not production code.")]
         public IActionResult DownloadReviewer()
         {
             // Attempt to initialize Excel
@@ -166,6 +169,7 @@ namespace CPMS.Controllers
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         [Obsolete("This method is Windows dependent", true)]
+        [SuppressMessage("Usage", "CA1416:Validate platform compatibility", Justification = "Not production code.")]
         public IActionResult DownloadReviews()
         {
             // Attempt to initialize Excel
@@ -237,6 +241,7 @@ namespace CPMS.Controllers
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         [Obsolete("This method is Windows dependent", true)]
+        [SuppressMessage("Usage", "CA1416:Validate platform compatibility", Justification = "Not production code.")]
         public IActionResult DownloadReviewSummary()
         {
             // Attempt to initialize Excel
@@ -327,6 +332,7 @@ namespace CPMS.Controllers
         /// </summary>
         /// <returns>an HTML page of the index page if the file has been downloaded correctly.</returns>
         [Obsolete("This method is Windows dependent", true)]
+        [SuppressMessage("Usage", "CA1416:Validate platform compatibility", Justification = "Not production code.")]
         public IActionResult DownloadReviewerComments()
         {
             // Attempt to initialize Excel
@@ -708,7 +714,7 @@ namespace CPMS.Controllers
                 Thread.Sleep(500); // easy way to prevent thread collision. 
                 using FileStream fileStream = System.IO.File.Open(fileVirtualPath, FileMode.Open);
                 bytes = new byte[fileStream.Length];
-                await fileStream.ReadAsync(bytes, 0, (int)fileStream.Length);
+                await fileStream.ReadAsync(bytes.AsMemory(0, (int)fileStream.Length));
             }
             return File(bytes, "application/octet-stream", fileName);
         }
