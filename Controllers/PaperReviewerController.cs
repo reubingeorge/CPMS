@@ -41,42 +41,30 @@ namespace CPMS.Controllers
         public IActionResult Create(int paperID, string? select_0, string? select_1, string? select_2)
         {
             ReviewDAO reviewDAO = new();
-            if (select_0 != null)
+            List<string> unprocessedReviewerIDs = new();
+            if (!string.IsNullOrEmpty(select_0))
             {
-                ReviewModel review = new()
-                {
-                    PaperID = paperID,
-                    ReviewerID = int.Parse(select_0)
-                };
-                reviewDAO.Create(review);
+                unprocessedReviewerIDs.Add(select_0);
             }
-            if (select_1 != null)
+            if (!string.IsNullOrEmpty(select_1))
             {
-                ReviewModel review = new()
-                {
-                    PaperID = paperID,
-                    ReviewerID = int.Parse(select_1)
-                };
-                reviewDAO.Create(review);
+                unprocessedReviewerIDs.Add(select_1);
             }
-            if (select_2 != null)
+            if (!string.IsNullOrEmpty(select_2))
             {
-                ReviewModel review = new()
-                {
-                    PaperID = paperID,
-                    ReviewerID = int.Parse(select_2)
-                };
-                reviewDAO.Create(review);
+                unprocessedReviewerIDs.Add(select_2);
             }
-            /*ReviewDAO reviewDAO= new();
 
-            foreach(var reviewerID in reviewerIDs)
+            var processedReviewerIDs = unprocessedReviewerIDs.DistinctBy(x => x).ToList();
+            foreach (var processedReviewerID in processedReviewerIDs)
             {
-                ReviewModel review = new();
-                review.PaperID = paperID;
-                review.ReviewID = reviewerID;
+                ReviewModel review = new()
+                {
+                    PaperID = paperID,
+                    ReviewerID = int.Parse(processedReviewerID)
+                };
                 reviewDAO.Create(review);
-            }*/
+            }
             
             return RedirectToAction("Index");
         }
