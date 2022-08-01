@@ -141,6 +141,7 @@ namespace CPMS.Controllers
         /// <param name="buttonPress">Credentials that the user wants to be registered as.</param>
         /// <returns>an html page of the user's choice.</returns>
         [AllowAnonymous]
+        [Obsolete("This method was never used")]
         public IActionResult RegisterSelect(string buttonPress)
         {
             return View();

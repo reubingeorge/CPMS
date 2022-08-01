@@ -668,7 +668,7 @@ namespace CPMS.Controllers
         /// <returns>Report file (in excel format)</returns>
         public async Task<FileResult> DownloadFile (string report)
         {
-            Console.WriteLine("Downloading File");
+
             string? fileName;
             var possibleAction = report.ToLower();
             switch (possibleAction)
